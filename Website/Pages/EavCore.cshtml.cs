@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ToSic.Eav.Data;
 
 namespace Website.Pages
 {
@@ -11,7 +8,9 @@ namespace Website.Pages
     {
         public void OnGet()
         {
-
+            EntityInBlog = ToSic.Eav.Apps.State.Get(78).List.First();
         }
+
+        public IEntity EntityInBlog;
     }
 }

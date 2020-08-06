@@ -16,6 +16,7 @@ namespace Website
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            new Plumbing.EavConfiguration().ConfigureConnectionString(configuration);
         }
 
         public IConfiguration Configuration { get; }
@@ -24,6 +25,11 @@ namespace Website
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            Plumbing.EavConfiguration.ConfigureIoC();
+
+            // test
+            System.IServiceProvider x = null;
+            // Microsoft.Extensions.DependencyInjection.IServiceProviderFactory<>
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
