@@ -1,0 +1,22 @@
+﻿@page
+@model Website.Pages.EavCoreModel
+@{
+    ViewData["Title"] = "Eav.Core";
+}
+
+<h1>Eav.Core and Basic "the DLLs are Here"</h1>
+
+<ol>
+    <li>
+        An EAV Constant: @ToSic.Eav.Constants.ContentAppName
+    </li>
+    <li>
+        A DataSource Object: @(new ToSic.Eav.DataSource().GetType().AssemblyQualifiedName)
+    </li>
+    <li>
+        Repository type Code: @(ToSic.Eav.Repositories.RepositoryTypes.Code)
+    </li>
+    <li>
+        2sxc constant: @(ToSic.Sxc.Settings.PortalHostDirectory)
+    </li>
+</ol>
