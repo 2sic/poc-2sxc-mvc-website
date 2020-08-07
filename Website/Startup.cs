@@ -28,7 +28,7 @@ namespace Website
             Plumbing.EavConfiguration.ConfigureIoC();
 
             // test
-            System.IServiceProvider x = null;
+            //System.IServiceProvider x = null;
             // Microsoft.Extensions.DependencyInjection.IServiceProviderFactory<>
         }
 

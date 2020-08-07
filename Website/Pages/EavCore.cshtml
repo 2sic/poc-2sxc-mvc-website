@@ -41,4 +41,11 @@
         Title: @Model.EntityInBlog.GetBestTitle() <br/>
         Query AllQueries: @ToSic.Eav.Apps.State.Get(78)  can't work yet, this object doesn't have queries!
     </li>
+    <li>
+        Blog DS = @Model.BlogRoot().List.Count()
+    </li>
+    <li>
+        blog tags: @Model.BlogTags().List.Count() <br/>
+        first: @Model.BlogTags().List.First().GetBestTitle()
+    </li>
 </ol>
