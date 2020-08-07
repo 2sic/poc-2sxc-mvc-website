@@ -20,6 +20,7 @@
     <ProjectReference Include="..\..\eav-server\ToSic.Eav.Persistence.Efc\ToSic.Eav.Persistence.Efc.csproj" />
     <ProjectReference Include="..\..\eav-server\ToSic.Eav.Repository.Efc\ToSic.Eav.Repository.Efc.csproj" />
     <ProjectReference Include="..\..\eav-server\ToSic.Eav\ToSic.Eav.csproj" />
+    <ProjectReference Include="..\ToSic.Sxc.Mvc\ToSic.Sxc.Mvc.csproj" />
   </ItemGroup>
 
 </Project>

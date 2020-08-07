@@ -48,4 +48,10 @@
         blog tags: @Model.BlogTags().List.Count() <br/>
         first: @Model.BlogTags().List.First().GetBestTitle()
     </li>
+    <li>
+        App: @Model.BlogApp.AppGuid <br/>
+        Folder: @Model.BlogApp.Folder <br/>
+        Data: @Model.BlogApp.Data.List.Count() <br/>
+        Query: @Model.BlogApp.Query["AllQueries"].List.Count()
+    </li>
 </ol>
