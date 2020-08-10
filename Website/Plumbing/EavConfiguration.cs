@@ -22,9 +22,10 @@ namespace Website.Plumbing
             ToSic.Eav.Repository.Efc.Implementations.Configuration.SetFeaturesHelpLink("https://2sxc.org/help?tag=features", "https://2sxc.org/r/f/");
         }
 
-        internal static void ConfigureIoC()
+        internal static void ConfigureIoC(IServiceCollection services)
         {
-            ToSic.Eav.Factory.ActivateNetCoreDi(sc =>
+            Factory.BetaUseExistingServiceCollection(services);
+            Factory.ActivateNetCoreDi(sc =>
             {
                 sc.AddTransient<ToSic.Eav.Conversion.EntitiesToDictionary, DataToDictionary>();
                 sc.AddTransient<IValueConverter, BasicValueConverter>();
@@ -37,11 +38,17 @@ namespace Website.Plumbing
                 sc.AddTransient<IAppEnvironment, ToSic.Sxc.Mvc.Run.MvcEnvironment>();
                 sc.AddTransient<IEnvironment, MvcEnvironment>();
 
+                // new for .net standard
+                sc.AddTransient<ITenant, MvcTenant>();
+                //sc.AddTransient<IAppFileSystemLoader, DnnAppFileSystemLoader>();
+                //sc.AddTransient<IAppRepositoryLoader, DnnAppFileSystemLoader>();
+                sc.AddTransient<IHttp, HttpAbstraction>();
+
+
                 // The file-importer - temporarily itself
                 sc.AddTransient<XmlImportWithFiles, XmlImportFull>();
 
                 sc.AddTransient<IClientDependencyOptimizer, BasicClientDependencyOptimizer>();
-                sc.AddTransient<IRuntimeFactory, MvcEnvironmentFactory>();
                 sc.AddTransient<IEnvironmentFactory, MvcEnvironmentFactory>();
                 sc.AddTransient<IWebFactoryTemp, MvcEnvironmentFactory>();
                 //sc.AddTransient<IRenderingHelpers, DnnRenderingHelpers>();

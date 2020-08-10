@@ -3,27 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Website", "Website.csproj", "{925F207C-FD93-4437-8B17-2979EA1788D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Website", "Website\Website.csproj", "{925F207C-FD93-4437-8B17-2979EA1788D5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Eav", "Eav", "{49A622F5-20EC-4690-972C-0D8D1FB65F05}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Eav.Core", "..\..\eav-server\ToSic.Eav.Core\ToSic.Eav.Core.csproj", "{82F94588-269B-4CDD-98D1-D5CB14C39090}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Eav.Core", "..\eav-server\ToSic.Eav.Core\ToSic.Eav.Core.csproj", "{82F94588-269B-4CDD-98D1-D5CB14C39090}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Eav.DataSources", "..\..\eav-server\ToSic.Eav.DataSources\ToSic.Eav.DataSources.csproj", "{39F75DA2-527F-4821-8973-8F7A8A22F248}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Eav.DataSources", "..\eav-server\ToSic.Eav.DataSources\ToSic.Eav.DataSources.csproj", "{39F75DA2-527F-4821-8973-8F7A8A22F248}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Eav.Persistence.Efc", "..\..\eav-server\ToSic.Eav.Persistence.Efc\ToSic.Eav.Persistence.Efc.csproj", "{4BB6103C-5D69-4819-8BC7-4CB6DD8DE9C6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Eav.Persistence.Efc", "..\eav-server\ToSic.Eav.Persistence.Efc\ToSic.Eav.Persistence.Efc.csproj", "{4BB6103C-5D69-4819-8BC7-4CB6DD8DE9C6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Eav.Repository.Efc", "..\..\eav-server\ToSic.Eav.Repository.Efc\ToSic.Eav.Repository.Efc.csproj", "{2BF19BD9-7DC6-49DD-9FAE-8A00D36672EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Eav.Repository.Efc", "..\eav-server\ToSic.Eav.Repository.Efc\ToSic.Eav.Repository.Efc.csproj", "{2BF19BD9-7DC6-49DD-9FAE-8A00D36672EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Eav.ImportExport", "..\..\eav-server\ToSic.Eav.ImportExport\ToSic.Eav.ImportExport.csproj", "{1E2B34BA-1BCF-41A1-A6C4-3C7306005D6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Eav.ImportExport", "..\eav-server\ToSic.Eav.ImportExport\ToSic.Eav.ImportExport.csproj", "{1E2B34BA-1BCF-41A1-A6C4-3C7306005D6C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Eav.Apps", "..\..\eav-server\ToSic.Eav.Apps\ToSic.Eav.Apps.csproj", "{5AAE2664-EF44-4D4F-A0B0-4CE1EF7CC538}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Eav.Apps", "..\eav-server\ToSic.Eav.Apps\ToSic.Eav.Apps.csproj", "{5AAE2664-EF44-4D4F-A0B0-4CE1EF7CC538}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Eav", "..\..\eav-server\ToSic.Eav\ToSic.Eav.csproj", "{8BF1C19A-0799-446A-93AB-BFD0AA6014BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Eav", "..\eav-server\ToSic.Eav\ToSic.Eav.csproj", "{8BF1C19A-0799-446A-93AB-BFD0AA6014BD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2sxc core (ToSic.Sxc)", "..\..\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\ToSic.Sxc\2sxc core (ToSic.Sxc).csproj", "{B7CC6286-1F54-436A-AF60-F30E506D09C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2sxc core (ToSic.Sxc)", "..\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\ToSic.Sxc\2sxc core (ToSic.Sxc).csproj", "{B7CC6286-1F54-436A-AF60-F30E506D09C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToSic.Sxc.Mvc", "..\ToSic.Sxc.Mvc\ToSic.Sxc.Mvc.csproj", "{4F3FC2E2-0C39-4B18-B122-1126E0F4CE5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToSic.Sxc.Mvc", "ToSic.Sxc.Mvc\ToSic.Sxc.Mvc.csproj", "{4F3FC2E2-0C39-4B18-B122-1126E0F4CE5D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2sxc", "2sxc", "{FAD1DD60-E77F-4B4E-B8C8-697F7AD1050D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -146,7 +148,7 @@ Global
 		{1E2B34BA-1BCF-41A1-A6C4-3C7306005D6C} = {49A622F5-20EC-4690-972C-0D8D1FB65F05}
 		{5AAE2664-EF44-4D4F-A0B0-4CE1EF7CC538} = {49A622F5-20EC-4690-972C-0D8D1FB65F05}
 		{8BF1C19A-0799-446A-93AB-BFD0AA6014BD} = {49A622F5-20EC-4690-972C-0D8D1FB65F05}
-		{B7CC6286-1F54-436A-AF60-F30E506D09C8} = {49A622F5-20EC-4690-972C-0D8D1FB65F05}
+		{B7CC6286-1F54-436A-AF60-F30E506D09C8} = {FAD1DD60-E77F-4B4E-B8C8-697F7AD1050D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9C7C54EF-9829-4B2F-A084-EA3C34C61C3B}

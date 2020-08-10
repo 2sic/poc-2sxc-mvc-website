@@ -11,6 +11,8 @@ namespace ToSic.Sxc.Mvc.Run
     [InternalApi_DoNotUse_MayChangeWithoutNotice("this is just fyi")]
     public class MvcTenant : Tenant<MvcPortalSettings>
     {
+        public MvcTenant() : base(new MvcPortalSettings()) { }
+
         /// <inheritdoc />
         public override string DefaultLanguage => UnwrappedContents.DefaultLanguage;
 

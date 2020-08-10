@@ -1,12 +1,15 @@
 ﻿using System.Linq;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ToSic.Eav;
 using ToSic.Eav.Apps;
 using ToSic.Eav.Data;
 using ToSic.Eav.DataSources;
 using ToSic.Eav.LookUp;
+using ToSic.Eav.Run;
 using ToSic.Sxc.Mvc.Run;
 using ToSic.Sxc.Mvc.TestStuff;
+using ToSic.Sxc.Web;
 
 namespace Website.Pages
 {
@@ -14,10 +17,15 @@ namespace Website.Pages
     {
         protected const int ZoneId = 2;
         protected const int AppId = 78;
+
+        public EavCoreModel()
+        {
+        }
+
+
         public void OnGet()
         {
-            EntityInBlog = ToSic.Eav.Apps.State.Get(AppId).List.First();
-
+            EntityInBlog = State.Get(AppId).List.First();
         }
 
         public IEntity EntityInBlog;

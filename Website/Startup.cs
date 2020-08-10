@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,11 +27,17 @@ namespace Website
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            Plumbing.EavConfiguration.ConfigureIoC();
+            
+            // enable use of HttpContext
+            services.AddHttpContextAccessor();
 
-            // test
-            //System.IServiceProvider x = null;
-            // Microsoft.Extensions.DependencyInjection.IServiceProviderFactory<>
+            // enable use of UrlHelper for AbsolutePath
+            services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
+            services.AddSingleton<IUrlHelperFactory, UrlHelperFactory>();
+            services.AddScoped(it => it.GetService<IUrlHelperFactory>()
+                .GetUrlHelper(it.GetService<IActionContextAccessor>().ActionContext));
+
+            Plumbing.EavConfiguration.ConfigureIoC(services);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

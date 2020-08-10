@@ -15,7 +15,7 @@ namespace ToSic.Sxc.Mvc.Run
 
         public IUser User { get; } = new MvcUser();
 
-        public IPagePublishing PagePublishing { get; }
+        public IPagePublishing PagePublishing => Eav.Factory.Resolve<IPagePublishing>().Init(Log);
 
 
         public string MapAppPath(string virtualPath)
@@ -28,11 +28,16 @@ namespace ToSic.Sxc.Mvc.Run
 
         public MvcEnvironment() : base("DNN.Enviro") { }
 
-        public MvcEnvironment(ILog parentLog = null) : base("DNN.Enviro", parentLog, "()")
-        {
-            PagePublishing = Eav.Factory.Resolve<IEnvironmentFactory>().PagePublisher(Log);
-        }
+        //public MvcEnvironment(ILog parentLog = null) : base("DNN.Enviro", parentLog, "()")
+        //{
+        //    PagePublishing = Eav.Factory.Resolve<IEnvironmentFactory>().PagePublisher(Log);
+        //}
 
         public string DefaultLanguage => new MvcPortalSettings().DefaultLanguage;
+        public IAppEnvironment Init(ILog parent)
+        {
+            Log.LinkTo(parent);
+            return this;
+        }
     }
 }
