@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ToSic.Eav.Apps;
 using ToSic.Eav.Documentation;
 using ToSic.Eav.Logging;
 using ToSic.Eav.Logging.Simple;
 using ToSic.Eav.LookUp;
 using ToSic.Eav.Run;
-using ToSic.Sxc.Apps;
 using ToSic.Sxc.LookUp;
+using App = ToSic.Sxc.Apps.App;
+using IApp = ToSic.Sxc.Apps.IApp;
 
 namespace ToSic.Sxc.Mvc
 {
@@ -22,7 +23,7 @@ namespace ToSic.Sxc.Mvc
         {
             var log = new Log("Dnn.Factry", parentLog);
             log.Add($"Create App(z:{zoneId}, a:{appId}, tenantObj:{tenant != null}, publishingEnabled: {publishingEnabled}, showDrafts: {showDrafts}, parentLog: {parentLog != null})");
-            var appStuff = new App(tenant, zoneId, appId,
+            var appStuff = Eav.Factory.Resolve<App>().Init(new AppIdentity(zoneId, appId),
                 ConfigurationProvider.Build(showDrafts, publishingEnabled, new LookUpEngine(parentLog)),
                 true, parentLog);
             return appStuff;

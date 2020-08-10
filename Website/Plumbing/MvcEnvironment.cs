@@ -10,5 +10,9 @@ namespace Website.Plumbing
     {
         public string DefaultLanguage => "en";
         public IUser User => null;
+        public string MapPath(string path)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
