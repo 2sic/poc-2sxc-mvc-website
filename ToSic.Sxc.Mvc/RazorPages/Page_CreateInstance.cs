@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ToSic.Sxc.Mvc.Razor
+namespace ToSic.Sxc.Mvc.RazorPages
 {
     public partial class Page
     {

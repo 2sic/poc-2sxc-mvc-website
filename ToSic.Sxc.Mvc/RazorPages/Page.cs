@@ -5,7 +5,7 @@ using ToSic.Sxc.Mvc.Code;
 using ToSic.Sxc.Mvc.Run;
 using ToSic.Sxc.Mvc.TestStuff;
 
-namespace ToSic.Sxc.Mvc.Razor
+namespace ToSic.Sxc.Mvc.RazorPages
 {
     public abstract partial class Page: Microsoft.AspNetCore.Mvc.RazorPages.Page, IHasLog
     {

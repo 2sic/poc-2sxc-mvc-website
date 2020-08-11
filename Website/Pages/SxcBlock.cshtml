@@ -1,5 +1,5 @@
 ﻿@page
-@inherits ToSic.Sxc.Mvc.Razor.Page
+@inherits ToSic.Sxc.Mvc.RazorPages.Page
 @model Website.Pages.SxcBlockModel
 @{
     ViewData["Title"] = "SxcBlock";
@@ -26,11 +26,12 @@
     <li>
         Get data BlogPost: @App.Data["BlogPost"].List.Count()
         @{
-            var first = AsList(App.Data["BlogPost"]).Last();
+            var last = AsList(App.Data["BlogPost"]).Last();
         }
-        First: @first.Title (image is @first.Image) 
+        First: @last.Title (image is @last.Image) <br/>
+        Body: @last.Body 
         <div>
-            @first.Body
+            @Html.Raw(last.Body)
         </div>
     </li>
 </ol>
