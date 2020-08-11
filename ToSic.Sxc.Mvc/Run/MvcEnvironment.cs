@@ -14,7 +14,7 @@ namespace ToSic.Sxc.Mvc.Run
             Log.LinkTo(parent);
             return this;
         }
-        private IHttp _http;
+        private readonly IHttp _http;
 
 
         public IZoneMapper ZoneMapper { get; } = new MvcZoneMapper();
