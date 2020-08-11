@@ -9,6 +9,7 @@ namespace ToSic.Sxc.Mvc.Code
         public MvcDynamicCode(IBlockBuilder blockBuilder, ILog parentLog) 
             : base(blockBuilder, Eav.Factory.Resolve<ITenant>(), 10, parentLog)
         {
+
         }
     }
 }

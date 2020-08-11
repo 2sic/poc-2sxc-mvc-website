@@ -12,4 +12,27 @@
 
 @BlockBuilder.App.AppId
 
+<ol>
+    <li>
+        App: @App <br/>
+        Items: @App.Data (@App.Data.List.Count())<br/>
+    </li>
+    <li>
+        AsDynamic entity: @AsDynamic(App.Data.List.First()).EntityTitle
+    </li>
+    <li>
+        AsDynamic Json: @AsDynamic("{\"test\": 25}").test
+    </li>
+    <li>
+        Get data BlogPost: @App.Data["BlogPost"].List.Count()
+        @{
+            var first = AsList(App.Data["BlogPost"]).Last();
+        }
+        First: @first.Title (image is @first.Image) 
+        <div>
+            @first.Body
+        </div>
+    </li>
+</ol>
+
 <hr/>

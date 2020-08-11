@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using ToSic.Eav.Apps;
 using ToSic.Eav.Apps.ImportExport;
+using ToSic.Eav.LookUp;
 using ToSic.Eav.Run;
 using ToSic.Eav.Run.Basic;
 using ToSic.SexyContent.Interfaces;
@@ -44,7 +45,7 @@ namespace ToSic.Sxc.Mvc.Run
             sc.AddTransient<IEnvironmentConnector, MvcEnvironmentConnector>();
             //sc.AddTransient<IEnvironmentInstaller, InstallationController>();
             //sc.AddTransient<IEnvironmentFileSystem, DnnFileSystem>();
-            //sc.AddTransient<IGetEngine, GetDnnEngine>();
+            sc.AddTransient<IGetEngine, MvcGetLookupEngine>();
             sc.AddTransient<IFingerprint, BasicFingerprint>();
 
             // add page publishing
