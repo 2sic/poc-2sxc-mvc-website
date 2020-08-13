@@ -29,13 +29,14 @@ namespace ToSic.Sxc.Mvc.Run
             //var tabId = pageId ?? mci.GetTabModulesByModule(instanceId)[0].TabID;
             //var settings = mci.GetModule(instanceId, tabId, false).ModuleSettings;
 
-            var maybeGuid = null as string; // settings[Settings.ContentGroupGuidString];
-            Guid.TryParse(maybeGuid?.ToString(), out var groupGuid);
+            //var maybeGuid = null as string; // settings[Settings.ContentGroupGuidString];
+            //Guid.TryParse(maybeGuid?.ToString(), out var groupGuid);
             var previewTemplateString = null as string; // settings[Settings.PreviewTemplateIdString]?.ToString();
-
             var templateGuid = !string.IsNullOrEmpty(previewTemplateString)
                 ? Guid.Parse(previewTemplateString)
                 : new Guid();
+
+            var groupGuid = TestConstants.InstanceContentBlockDb[instanceId];
 
             var found = cgm.GetContentGroupOrGeneratePreview(groupGuid, templateGuid);
             return wrapLog("ok", found);

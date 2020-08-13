@@ -4,16 +4,22 @@ namespace ToSic.Sxc.Mvc.Run
 {
     public class MvcContainer: IContainer
     {
-        public MvcContainer() { }
+        public MvcContainer(int tenantId = TestConstants.TenantId, int pageId = TestConstants.PageId,
+            int id = TestConstants.InstanceId)
+        {
+            TenantId = tenantId;
+            PageId = pageId;
+            Id = id;
+        }
 
         /// <inheritdoc />
-        public int Id => TestConstants.InstanceId; 
+        public int Id { get; }
+        
+        /// <inheritdoc />
+        public int PageId { get; }
 
         /// <inheritdoc />
-        public int PageId => TestConstants.PageId;
-
-        /// <inheritdoc />
-        public int TenantId => TestConstants.TenantId;
+        public int TenantId { get; }
 
         /// <inheritdoc />
         public bool IsPrimary => true;

@@ -18,7 +18,7 @@ namespace ToSic.Sxc.Mvc.RazorPages
 
         #region Content, Header, etc. and List
         /// <inheritdoc/>
-        public dynamic Content => DynCode.Content;
+        public new dynamic Content => DynCode.Content;
 
         /// <inheritdoc />
         public dynamic Header => DynCode.Header;

@@ -10,11 +10,11 @@
     testing... 
 </div>
 
-@BlockBuilder.App.AppId
+<h2>Details</h2>
 
 <ol>
     <li>
-        App: @App <br/>
+        App: @App (AppId: @BlockBuilder.App.AppId) <br/>
         Items: @App.Data (@App.Data.List.Count())<br/>
     </li>
     <li>
@@ -36,4 +36,24 @@
     </li>
 </ol>
 
+<h2>Content</h2>
+
+Content is null: "@(Content == null)" @Content "@Content.EntityTitle"
+
+<h3>Data</h3>
+<ol>
+    <li>Data: @Data</li>
+    <li>Out Streams: (@Data.Out.Count) @String.Join(',', Data.Out.Keys)</li>
+    <li>Out Default: (@Data.List.Count())</li>
+</ol>
+
+<h3>Items List </h3>
+<ol>
+    @foreach (var item in AsList(Data))
+    {
+        <li>@item.EntityTitle</li>
+    }
+</ol>
+
 <hr/>
+
