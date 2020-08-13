@@ -30,11 +30,15 @@ await Component.InvokeAsync()
 
 
 <h2>Direct call of my component inheriting from SxcRazorPage</h2>
+Html.Partial("Partial/SxcRazorPagePartial", new ViewDataDictionary(ViewData))
+
+
 @Html.Partial("Partial/SxcRazorPagePartial", new ViewDataDictionary(ViewData)
 {
     { "id", TestConstants.BlogInstanceId },
     { "PageId", TestConstants.BlogPage },
-    { "AppId", TestConstants.BlogApp }
+    { "AppId", TestConstants.BlogApp },
+    { "Block", TestConstants.BlogGuid }
 })
 
 <h2>Now a simple content</h2>
@@ -42,5 +46,6 @@ await Component.InvokeAsync()
 {
     { "Id", TestConstants.ContentInstance },
     { "PageId", TestConstants.ContentPage },
-    { "AppId", TestConstants.ContentApp }
+    { "AppId", TestConstants.ContentApp },
+    { "Block", TestConstants.ContentGuid }
 })

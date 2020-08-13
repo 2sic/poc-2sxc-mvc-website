@@ -1,9 +1,5 @@
 ﻿using ToSic.Eav.Logging;
 using ToSic.Eav.Logging.Simple;
-using ToSic.Sxc.Blocks;
-using ToSic.Sxc.Mvc.Code;
-using ToSic.Sxc.Mvc.Run;
-using ToSic.Sxc.Mvc.TestStuff;
 
 namespace ToSic.Sxc.Mvc.RazorPages
 {
@@ -19,8 +15,6 @@ namespace ToSic.Sxc.Mvc.RazorPages
 
 
         public string Hi() => "hi";
-
-
 
     }
 }

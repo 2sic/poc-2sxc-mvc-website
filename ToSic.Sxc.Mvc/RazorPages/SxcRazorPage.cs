@@ -27,11 +27,21 @@ namespace ToSic.Sxc.Mvc.RazorPages
         public int AppId => _appId ?? (_appId = GetNumberFromViewData("AppId")).Value;
         private int? _appId;
 
+        public Guid Block => _block ?? (_block = GetGuidFromViewData("Block")).Value;
+        private Guid? _block;
+
         private int GetNumberFromViewData(string name)
         {
             object idObj = null;
             ViewData?.TryGetValue(name, out idObj);
             int.TryParse(idObj?.ToString(), out var tempId);
+            return tempId;
+        }
+        private Guid GetGuidFromViewData(string name)
+        {
+            object idObj = null;
+            ViewData?.TryGetValue(name, out idObj);
+            Guid.TryParse(idObj?.ToString(), out var tempId);
             return tempId;
         }
 
