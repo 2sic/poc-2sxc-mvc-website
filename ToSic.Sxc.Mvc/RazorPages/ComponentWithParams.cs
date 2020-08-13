@@ -9,10 +9,6 @@ namespace ToSic.Sxc.Mvc.RazorPages
         public int PageId;
         public int InstanceId;
 
-        public ComponentWithParams()
-        {
-
-        }
 
         public async Task<IViewComponentResult> InvokeAsync(int pageId, int instanceId)
         {
@@ -25,7 +21,7 @@ namespace ToSic.Sxc.Mvc.RazorPages
                 "There",
                 "something"
             };
-            return View(items);
+            return View(); //items, model);
         }
     }
 }

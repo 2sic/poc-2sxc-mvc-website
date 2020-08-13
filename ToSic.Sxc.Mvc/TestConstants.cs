@@ -1,23 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ToSic.Sxc.Mvc
 {
     public class TestConstants
     {
+        // Global, valid for all
         public const int TenantId = 2;
-        public const int AppId = 78;
-        public const int PageId = 680;
-        public const int InstanceId = 6935;
-
         public const string DefaultLanguage = "en";
+
+        // Blog App
+        public const int BlogApp = 78;
+        public const int BlogPage = 680;
+        public const int BlogInstanceId = 3002;
+        public static Guid BlogGuid = new Guid("9cbcee9d-49d5-4fe0-8e74-1e20f74a5916");
+
+        // Content App on home
+        public const int ContentPage = 56;
+        public const int ContentInstance = 6935;
+        public const int ContentApp = 2;
+        public static Guid ContentGuid = new Guid("f8ae3d07-5805-4650-a46d-a047e113ab53");
 
 
         public static Dictionary<int, Guid> InstanceContentBlockDb = new Dictionary<int, Guid>
         {
-            {InstanceId, new Guid("9cbcee9d-49d5-4fe0-8e74-1e20f74a5916") },
+            {BlogInstanceId, BlogGuid },
+            {ContentInstance, ContentGuid }
         };
+
     }
 }
 

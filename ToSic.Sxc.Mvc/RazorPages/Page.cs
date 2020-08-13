@@ -17,31 +17,10 @@ namespace ToSic.Sxc.Mvc.RazorPages
         public ILog Log { get; }
         #endregion
 
-        #region DynCode 
-
-        protected MvcDynamicCode DynCode => _dynCode ?? (_dynCode = new MvcDynamicCode(BlockBuilder, Log));
-        private MvcDynamicCode _dynCode;
-        #endregion
 
         public string Hi() => "hi";
 
 
-        public IBlockBuilder BlockBuilder
-        {
-            get
-            {
-                if (_cmsBlockLoaded) return _blockBuilder;
-                _cmsBlockLoaded = true;
-                _blockBuilder = new BlockFromModule(
-                        new MvcContainer(),
-                        Log,
-                        new MvcTenant(new MvcPortalSettings()))
-                    .BlockBuilder as BlockBuilder;
-                return _blockBuilder;
-            }
-        }
-        private BlockBuilder _blockBuilder;
-        private bool _cmsBlockLoaded;
 
     }
 }

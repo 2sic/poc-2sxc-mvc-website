@@ -4,12 +4,13 @@ namespace ToSic.Sxc.Mvc.Run
 {
     public class MvcContainer: IContainer
     {
-        public MvcContainer(int tenantId = TestConstants.TenantId, int pageId = TestConstants.PageId,
-            int id = TestConstants.InstanceId)
+        public MvcContainer(int tenantId = TestConstants.TenantId, int pageId = TestConstants.BlogPage,
+            int id = TestConstants.BlogInstanceId, int appId = TestConstants.BlogApp)
         {
             TenantId = tenantId;
             PageId = pageId;
             Id = id;
+            AppId = appId;
         }
 
         /// <inheritdoc />
@@ -23,6 +24,9 @@ namespace ToSic.Sxc.Mvc.Run
 
         /// <inheritdoc />
         public bool IsPrimary => true;
+
+        // special while testing
+        public int AppId = TestConstants.BlogApp;
     }
 
 }

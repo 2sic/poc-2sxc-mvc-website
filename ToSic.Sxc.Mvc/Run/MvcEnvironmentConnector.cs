@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using ToSic.Eav.Data;
 using ToSic.Eav.Logging;
 using ToSic.Eav.Run;
@@ -13,14 +14,9 @@ namespace ToSic.Sxc.Mvc.Run
     {
         public int? GetAppIdFromInstance(IContainer instance, int zoneId)
         {
-            return TestConstants.AppId;
+            if (instance is MvcContainer mvcInstance) return mvcInstance.AppId;
+            throw new KeyNotFoundException($"Can't find AppId for this instance {instance.Id}");
         }
-
-        public void SetAppIdForInstance(IContainer instance, IAppEnvironment env, int? appId, ILog parentLog) => throw new NotImplementedException();
-
-        public void SetPreviewTemplate(int instanceId, Guid previewTemplateGuid) => throw new NotImplementedException();
-
-        public void SetContentGroup(int instanceId, bool wasCreated, Guid guid) => throw new NotImplementedException();
 
         public BlockConfiguration GetInstanceContentGroup(BlocksRuntime cgm, ILog log, int instanceId, int? pageId)
         {
@@ -41,6 +37,12 @@ namespace ToSic.Sxc.Mvc.Run
             var found = cgm.GetContentGroupOrGeneratePreview(groupGuid, templateGuid);
             return wrapLog("ok", found);
         }
+
+        public void SetAppIdForInstance(IContainer instance, IAppEnvironment env, int? appId, ILog parentLog) => throw new NotImplementedException();
+
+        public void SetPreviewTemplate(int instanceId, Guid previewTemplateGuid) => throw new NotImplementedException();
+
+        public void SetContentGroup(int instanceId, bool wasCreated, Guid guid) => throw new NotImplementedException();
 
         public void UpdateTitle(IBlockBuilder blockBuilder, IEntity titleItem) => throw new NotImplementedException();
     }
