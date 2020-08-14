@@ -1,0 +1,13 @@
+﻿@page
+@using ToSic.Sxc.Mvc
+@model Website.Pages.BlogModel
+
+<h1>Blog</h1>
+
+@Html.Partial("../wwwroot/2sxc/Blog/_List.cshtml", new ViewDataDictionary(ViewData)
+{
+    { "Id", TestConstants.BlogInstanceId },
+    { "PageId", TestConstants.BlogPage},
+    { "AppId", TestConstants.BlogApp},
+    { "Block", TestConstants.BlogGuid}
+})

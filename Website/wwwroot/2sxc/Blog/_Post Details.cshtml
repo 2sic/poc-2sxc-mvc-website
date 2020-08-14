@@ -3,21 +3,15 @@
     ViewData["Title"] = "Default";
 }
 
-<h1>SxcRazorPage as Partial - showing app/content data</h1>
+<h1>Post Details - should have same name as in real blog app</h1>
 
-<ol>
-    <li>
-        Id: @ViewData["id"] / @Id <br />
-        Page: @PageId
-    </li>
-    <li>
-        App: @App.Name
-    </li>
-</ol>
+My type: @GetType().FullName
 
-<h4>Type info</h4>
+The App being shown: @App.Name
+<br />
 
-@GetType().FullName
+Content Title: @Content.Title
+
 
 <h2>Details</h2>
 
@@ -39,7 +33,7 @@
             @{
                 var last = AsList(App.Data["BlogPost"]).Last();
             }
-            First: @last.Title (image is @last.Image) <br/>
+            First: @last.Title (image is @last.Image) <br />
             Body: @last.Body
             <div>
                 @Html.Raw(last.Body)
@@ -57,14 +51,6 @@ Content is null: "@(Content == null)" @Content "@Content.EntityTitle"
     <li>Data: @Data</li>
     <li>Out Streams: (@Data.Out.Count) @String.Join(',', Data.Out.Keys)</li>
     <li>Out Default: (@Data.List.Count())</li>
-</ol>
-
-<h3>Items List </h3>
-<ol>
-    @foreach (var item in AsList(Data))
-    {
-        <li>@item.EntityTitle</li>
-    }
 </ol>
 
 <hr />

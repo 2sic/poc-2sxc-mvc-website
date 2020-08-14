@@ -4,8 +4,12 @@ namespace ToSic.Sxc.Mvc.RazorPages
 {
     public partial class SxcRazorPage<TModel>
     {
-
-        public string CreateInstancePath { get; set; }
+        public string CreateInstancePath
+        {
+            get => _createInstancePath ?? Path;
+            set => _createInstancePath = value;
+        }
+        private string _createInstancePath;
 
         /// <summary>
         /// Creates instances of the shared pages with the given relative path

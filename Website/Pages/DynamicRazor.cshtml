@@ -1,0 +1,19 @@
+﻿@page
+@using ToSic.Sxc.Mvc
+@model Website.Pages.DynamicRazorModel
+@{
+    ViewData["Title"] = "DynamicRazor";
+}
+
+<h1>Dynamic Razor Data</h1>
+
+@Html.Partial("../wwwroot/2sxc/Content/RunContent.cshtml", new ViewDataDictionary(ViewData)
+{
+    { "Id", TestConstants.ContentInstance },
+    { "PageId", TestConstants.ContentPage },
+    { "AppId", TestConstants.ContentApp },
+    { "Block", TestConstants.ContentGuid }
+})
+
+<hr/>
+Test Link to a sub-page: <a href="?post=good-bye-jquery-you-were-awesome">Test Link to subpage jquery</a>

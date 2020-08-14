@@ -8,6 +8,7 @@ namespace ToSic.Sxc.Mvc
         // Global, valid for all
         public const int TenantId = 2;
         public const string DefaultLanguage = "en";
+        public const int PrimaryApp = ContentApp;
 
         // Blog App
         public const int BlogApp = 78;

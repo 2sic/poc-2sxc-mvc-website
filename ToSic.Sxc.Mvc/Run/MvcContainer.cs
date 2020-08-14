@@ -30,7 +30,7 @@ namespace ToSic.Sxc.Mvc.Run
         public int TenantId { get; }
 
         /// <inheritdoc />
-        public bool IsPrimary => true;
+        public bool IsPrimary => BlockIdentifier.AppId == TestConstants.PrimaryApp;
 
         public IBlockIdentifier BlockIdentifier
         {
