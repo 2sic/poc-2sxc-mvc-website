@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using ToSic.Eav.Apps.Run;
 using ToSic.Eav.Logging;
 using ToSic.Eav.Run;
+using ToSic.Sxc.Web;
 
 namespace ToSic.Sxc.Mvc.Run
 {
@@ -32,14 +34,16 @@ namespace ToSic.Sxc.Mvc.Run
         /// <inheritdoc />
         public bool IsPrimary => BlockIdentifier.AppId == TestConstants.PrimaryApp;
 
-        public IBlockIdentifier BlockIdentifier
+        public List<KeyValuePair<string, string>> Parameters
         {
-            get
-            {
-                if (_blockIdentifier != null) return _blockIdentifier;
-                return _blockIdentifier = new BlockIdentifier(TenantId, AppId, Block, Guid.Empty);
-            }
+            get => _parameters ??
+                   (_parameters = Eav.Factory.Resolve<IHttp>().QueryStringKeyValuePairs());
+            set => _parameters = value;
         }
+        private List<KeyValuePair<string, string>> _parameters;
+
+        public IBlockIdentifier BlockIdentifier 
+            => _blockIdentifier ?? (_blockIdentifier = new BlockIdentifier(TenantId, AppId, Block, Guid.Empty));
 
         private IBlockIdentifier _blockIdentifier;
 

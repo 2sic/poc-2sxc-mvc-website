@@ -18,10 +18,10 @@ namespace ToSic.Sxc.Mvc.RazorPages
             {
                 if (_blockLoaded) return _blockBuilder;
                 _blockLoaded = true;
-                _blockBuilder = new BlockFromModule(
+                _blockBuilder = new BlockFromModule().Init(
+                        new MvcTenant(new MvcPortalSettings()),
                         new MvcContainer(),
-                        Log,
-                        new MvcTenant(new MvcPortalSettings()))
+                        Log)
                     .BlockBuilder as BlockBuilder;
                 return _blockBuilder;
             }
