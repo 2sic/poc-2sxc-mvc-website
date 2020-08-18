@@ -1,12 +1,16 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using ToSic.Eav.Apps;
 using ToSic.Eav.Apps.ImportExport;
+using ToSic.Eav.ImportExport.Persistence.File;
 using ToSic.Eav.LookUp;
 using ToSic.Eav.Run;
 using ToSic.Eav.Run.Basic;
 using ToSic.SexyContent.Interfaces;
 using ToSic.Sxc.Apps.ImportExport;
+using ToSic.Sxc.Code;
 using ToSic.Sxc.Conversion;
+using ToSic.Sxc.Interfaces;
+using ToSic.Sxc.Mvc.Code;
 using ToSic.Sxc.Run;
 using ToSic.Sxc.Web;
 using ToSic.Sxc.Web.Basic;
@@ -24,7 +28,7 @@ namespace ToSic.Sxc.Mvc.Run
             //sc.AddTransient<XmlExporter, DnnXmlExporter>();
             //sc.AddTransient<IImportExportEnvironment, DnnImportExportEnvironment>();
 
-            sc.AddTransient<IRuntime, BasicRuntime>();
+            sc.AddTransient<IRuntime, Runtime>();
             sc.AddTransient<IAppEnvironment, MvcEnvironment>();
             sc.AddTransient<IEnvironment, MvcEnvironment>();
 
@@ -33,6 +37,7 @@ namespace ToSic.Sxc.Mvc.Run
             //sc.AddTransient<IAppFileSystemLoader, DnnAppFileSystemLoader>();
             //sc.AddTransient<IAppRepositoryLoader, DnnAppFileSystemLoader>();
             sc.AddTransient<IHttp, HttpAbstraction>();
+            sc.AddTransient<IRenderingHelper, MvcRenderingHelper>();
 
 
             // The file-importer - temporarily itself
@@ -40,10 +45,11 @@ namespace ToSic.Sxc.Mvc.Run
 
             sc.AddTransient<IClientDependencyOptimizer, BasicClientDependencyOptimizer>();
             sc.AddTransient<IEnvironmentFactory, MvcEnvironmentFactory>();
-            sc.AddTransient<IWebFactoryTemp, MvcEnvironmentFactory>();
+            //sc.AddTransient<IWebFactoryTemp, MvcEnvironmentFactory>();
+            sc.AddTransient<DynamicCodeRoot, MvcDynamicCode>();
             //sc.AddTransient<IRenderingHelpers, DnnRenderingHelpers>();
             sc.AddTransient<IEnvironmentConnector, MvcEnvironmentConnector>();
-            //sc.AddTransient<IEnvironmentInstaller, InstallationController>();
+            sc.AddTransient<IEnvironmentInstaller, MvcEnvironmentInstaller>();
             //sc.AddTransient<IEnvironmentFileSystem, DnnFileSystem>();
             sc.AddTransient<IGetEngine, MvcGetLookupEngine>();
             sc.AddTransient<IFingerprint, BasicFingerprint>();

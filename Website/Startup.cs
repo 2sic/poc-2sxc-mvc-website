@@ -12,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using ToSic.Sxc.Mvc;
 
 namespace Website
 {
@@ -31,6 +32,10 @@ namespace Website
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add SxcEngineTest
+            services.AddTransient<SxcMvcTempEngine>();
+
+            // Add razor pages dynamic compilation
             services.AddRazorPages()
                 // experiment
                 // https://github.com/aspnet/samples/blob/master/samples/aspnetcore/mvc/runtimecompilation/MyApp/Startup.cs#L26

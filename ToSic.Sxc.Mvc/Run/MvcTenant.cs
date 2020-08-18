@@ -19,11 +19,13 @@ namespace ToSic.Sxc.Mvc.Run
         /// <inheritdoc />
         public override int Id => UnwrappedContents.Id;
 
+        public override string Url => "todo-mvc-tenant-should-be-host-name";
+
         /// <inheritdoc />
         public override string Name => UnwrappedContents.Name;
 
         [PrivateApi]
-        public override string SxcPath => Path.Combine(UnwrappedContents.HomePath, Settings.AppsRootFolder);
+        public override string AppsRoot => Path.Combine(UnwrappedContents.HomePath, Settings.AppsRootFolder);
 
         [PrivateApi]
         public override bool RefactorUserIsAdmin => false;

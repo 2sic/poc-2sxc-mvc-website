@@ -4,13 +4,11 @@ using ToSic.Eav.Data;
 using ToSic.Eav.Logging;
 using ToSic.Eav.Run;
 using ToSic.Eav.Security;
-using ToSic.SexyContent.Interfaces;
-using ToSic.Sxc.Code;
 using IApp = ToSic.SexyContent.Interfaces.IApp;
 
 namespace ToSic.Sxc.Mvc.Run
 {
-    public class MvcEnvironmentFactory : IEnvironmentFactory, IWebFactoryTemp
+    public class MvcEnvironmentFactory : IEnvironmentFactory //, IWebFactoryTemp
     {
         /// <inheritdoc />
         public PermissionCheckBase ItemPermissions(IAppIdentity appIdentity, IEntity targetItem, ILog parentLog,
@@ -36,34 +34,11 @@ namespace ToSic.Sxc.Mvc.Run
 
         /// <inheritdoc />
         public PermissionCheckBase InstancePermissions(ILog parentLog, IContainer module, IApp app)
-            => throw new NotImplementedException();
+            => throw new NotImplementedException("InstancePermissions isn't implemented yet");
+
 
         ///// <inheritdoc />
-        //public IPagePublishing PagePublisher(ILog parentLog) => new NoPagePublishig();
-
-        ///// <inheritdoc />
-        //public IAppEnvironment Environment(ILog parentLog) => new MvcEnvironment(parentLog);
-
-        /// <inheritdoc />
-        public DynamicCodeRoot AppAndDataHelpers(Blocks.IBlockBuilder blockBuilder)
-            => throw new NotImplementedException();
-            //=> new DnnDynamicCode(blockBuilder, 9);
-
-
-        //// experimental
-        //public IAppFileSystemLoader AppFileSystemLoader(int appId, string path, ILog log)
-        //    => throw new NotImplementedException();
-        //    //=> new DnnAppFileSystemLoader(appId, path, PortalSettings.Current, log);
-
-        //// experimental
-        ///// <summary>
-        ///// This is the simpler signature, which is used from Eav.Core
-        ///// The more advance signature which can also deliver InputTypes is the AppFileSystemLoader
-        ///// </summary>
-        ///// <param name="appId"></param>
-        ///// <param name="path"></param>
-        ///// <param name="log"></param>
-        ///// <returns></returns>
-        //public IAppRepositoryLoader AppRepositoryLoader(int appId, string path, ILog log) => AppFileSystemLoader(appId, path, log);
+        //public DynamicCodeRoot AppAndDataHelpers(IBlockBuilder blockBuilder, ILog parentLog)
+        //    => new MvcDynamicCode().Init(blockBuilder, parentLog);
     }
 }

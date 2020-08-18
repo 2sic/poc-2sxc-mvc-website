@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using ToSic.Eav.Apps;
 using ToSic.Eav.Logging;
 using ToSic.Eav.Run;
@@ -15,23 +13,27 @@ namespace ToSic.Sxc.Mvc.Run
         {
         }
 
-        public int GetZoneId(int tenantId) => 2;
-
-        public int GetZoneId(ITenant tenant) => 2;
-
-        public IAppIdentity IdentityFromTenant(int tenantId, int appId)
+        public IZoneMapper Init(ILog parent)
         {
-            throw new NotImplementedException();
+            Log.LinkTo(parent);
+            return this;
         }
+
+        public int GetZoneId(int tenantId) => tenantId;
+
+        public int GetZoneId(ITenant tenant) => tenant.Id;
+
+        public IAppIdentity IdentityFromTenant(int tenantId, int appId) => new AppIdentity(tenantId, appId);
 
         public ITenant Tenant(int zoneId) => new MvcTenant(new MvcPortalSettings());
 
         public List<TempTempCulture> CulturesWithState(int tenantId, int zoneId)
         {
-            return new List<TempTempCulture>()
+            return new List<TempTempCulture>
             {
                 new TempTempCulture("en-us", "English USA", true)
             };
         }
+
     }
 }

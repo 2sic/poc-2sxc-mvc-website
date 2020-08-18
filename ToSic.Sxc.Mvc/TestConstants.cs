@@ -22,17 +22,15 @@ namespace ToSic.Sxc.Mvc
         public const int ContentApp = 2;
         public static Guid ContentGuid = new Guid("f8ae3d07-5805-4650-a46d-a047e113ab53");
 
+        // Token app here: http://2sexycontent.2dm.2sic/features/Tokens
 
-        public static Dictionary<int, Guid> InstanceContentBlockDb = new Dictionary<int, Guid>
-        {
-            {BlogInstanceId, BlogGuid },
-            {ContentInstance, ContentGuid }
-        };
+        public const int TokenAppId = 1262;
+        public const string TokenAppGuid = "b255e493-63b8-4c9a-b36a-a6487730f78f";
+        public const int TokenZoneId = 128;
+        public const int TokenPage = 4062;
+        public const int TokenInstance = 9170;
+        public static Guid TokenGuid = new Guid("584b7398-8517-4bdf-b05d-71d64b935f4f");
 
     }
 }
 
-
-//ID: 10522
-//RepoID: 10522
-//GUID: cf7e16ed-6289-4733-b4b9-55fa008049ad
