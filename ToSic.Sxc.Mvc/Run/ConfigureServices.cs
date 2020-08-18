@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using ToSic.Eav.Apps;
 using ToSic.Eav.Apps.ImportExport;
+using ToSic.Eav.Apps.Security;
 using ToSic.Eav.ImportExport.Persistence.File;
 using ToSic.Eav.LookUp;
 using ToSic.Eav.Run;
 using ToSic.Eav.Run.Basic;
-using ToSic.SexyContent.Interfaces;
 using ToSic.Sxc.Apps.ImportExport;
 using ToSic.Sxc.Code;
 using ToSic.Sxc.Conversion;
@@ -44,10 +44,8 @@ namespace ToSic.Sxc.Mvc.Run
             sc.AddTransient<XmlImportWithFiles, XmlImportFull>();
 
             sc.AddTransient<IClientDependencyOptimizer, BasicClientDependencyOptimizer>();
-            sc.AddTransient<IEnvironmentFactory, MvcEnvironmentFactory>();
-            //sc.AddTransient<IWebFactoryTemp, MvcEnvironmentFactory>();
+            sc.AddTransient<AppPermissionCheck, MvcPermissionCheck>();
             sc.AddTransient<DynamicCodeRoot, MvcDynamicCode>();
-            //sc.AddTransient<IRenderingHelpers, DnnRenderingHelpers>();
             sc.AddTransient<IEnvironmentConnector, MvcEnvironmentConnector>();
             sc.AddTransient<IEnvironmentInstaller, MvcEnvironmentInstaller>();
             //sc.AddTransient<IEnvironmentFileSystem, DnnFileSystem>();

@@ -10,7 +10,6 @@ namespace ToSic.Sxc.Mvc.Run
         protected override void LogToEnvironmentExceptions(Exception ex)
         {
             // Don't do anything
-            // throw new NotImplementedException();
         }
     }
 }
