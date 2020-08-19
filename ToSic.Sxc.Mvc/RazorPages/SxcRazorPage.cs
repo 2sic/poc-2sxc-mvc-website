@@ -1,17 +1,28 @@
 ﻿using System;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Razor.Internal;
+using Microsoft.Extensions.DependencyInjection;
 using ToSic.Eav.Logging;
 using ToSic.Eav.Logging.Simple;
+using ToSic.Sxc.Blocks;
 
 namespace ToSic.Sxc.Mvc.RazorPages
 {
     // test, doesn't do anything yet
-    public partial class SxcRazorPage<TModel>: Microsoft.AspNetCore.Mvc.Razor.RazorPage<TModel>
+    public abstract partial class SxcRazorPage<TModel>: Microsoft.AspNetCore.Mvc.Razor.RazorPage<TModel>
     {
         #region Constructor / DI
+
+        // Source: https://dotnetstories.com/blog/How-to-implement-a-custom-base-class-for-razor-views-in-ASPNET-Core-en-7106773524?o=rss
+
+        [RazorInject]
+        public IServiceProvider ServiceProvider { get; set; }
+
         protected SxcRazorPage()
         {
             Log = new Log("Mvc.SxcRzr");
+
+            var x = ServiceProvider;
+            var y = ServiceProvider?.GetService<IServiceProvider>();
         }
         public ILog Log { get; }
         #endregion
@@ -48,8 +59,17 @@ namespace ToSic.Sxc.Mvc.RazorPages
         #endregion
 
 
-        public override Task ExecuteAsync() => throw new NotImplementedException();
+        //public override Task ExecuteAsync() => throw new NotImplementedException();
 
+        public string Test()
+        {
+            var x = 7;
+            return "hello from test()";
+        }
+
+        public string VirtualPath { get; set; }
+
+        public Purpose Purpose { get; set; }
 
     }
 }

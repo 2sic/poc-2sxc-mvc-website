@@ -7,8 +7,14 @@ From https://www.learnrazorpages.com/advanced/render-partial-to-string <br/>
 
 <em>Note: won't send a real mail, just show it</em>
 
+<h2>The render inside this</h2>
+@Html.Raw(Model.InnerRender)
+
+<hr/>
+
 @if (TempData["PostResult"] == null)
 {
+    <h2>The Form</h2>
     <form method="post">
         <label asp-for="ContactForm.Name"></label>
         <div class="form-group">

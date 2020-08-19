@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using ToSic.Eav.Data;
 using ToSic.Eav.DataSources;
 using ToSic.Eav.Documentation;
@@ -14,12 +13,12 @@ using ToSic.Sxc.Web;
 
 namespace ToSic.Sxc.Mvc.RazorPages
 {
-    public partial class SxcRazorPage<TModel> : IDynamicCode
+    public partial class SxcRazorPage<TModel> : IDynamicCode, IIsSxcRazorPage
     {
 
         #region Content, Header, etc. and List
         /// <inheritdoc/>
-        public new dynamic Content => DynCode.Content;
+        public dynamic Content => DynCode.Content;
 
         /// <inheritdoc />
         public dynamic Header => DynCode.Header;

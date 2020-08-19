@@ -11,10 +11,11 @@ namespace ToSic.Sxc.Mvc
         public const int PrimaryApp = ContentApp;
 
         // Blog App
-        public const int BlogApp = 78;
-        public const int BlogPage = 680;
-        public const int BlogInstanceId = 3002;
-        public static Guid BlogGuid = new Guid("9cbcee9d-49d5-4fe0-8e74-1e20f74a5916");
+        public const int BlogT = 2;
+        public const int BlogA = 78;
+        public const int BlogP = 680;
+        public const int BlogI = 3002;
+        public static Guid BlogB = new Guid("9cbcee9d-49d5-4fe0-8e74-1e20f74a5916");
 
         // Content App on home
         public const int ContentPage = 56;

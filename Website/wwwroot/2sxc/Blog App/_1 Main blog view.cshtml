@@ -1,4 +1,4 @@
-﻿@inherits ToSic.Sxc.Mvc.Engines.RazorComponentBase
+﻿@inherits ToSic.Sxc.Mvc.RazorPages.SxcRazorPage<TModel>
 
 <h1>Main Blog List file</h1>
 
@@ -14,7 +14,7 @@ Content Title: @Content.Title
 
 <ol>
     <li>
-        App: @App (AppId: @BlockBuilder.App.AppId) <br />
+        App: @App (AppId: @App.AppId) <br />
         Items: @App.Data (@App.Data.List.Count())<br />
     </li>
     <li>

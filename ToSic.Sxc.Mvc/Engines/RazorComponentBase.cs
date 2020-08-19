@@ -1,12 +1,11 @@
-﻿using ToSic.Sxc.Blocks;
-using ToSic.Sxc.Mvc.RazorPages;
+﻿using ToSic.Sxc.Mvc.RazorPages;
 
 namespace ToSic.Sxc.Mvc.Engines
 {
-    public class RazorComponentBase: SxcRazorPage<DummyModel>
+    public abstract class RazorComponentBase: SxcRazorPage<DummyModel>
     {
-        public string VirtualPath;
+        //public string VirtualPath;
 
-        public Purpose Purpose;
+        //public Purpose Purpose;
     }
 }

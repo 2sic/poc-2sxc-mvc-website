@@ -2,30 +2,44 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RazorPartialToString.Services;
+using ToSic.Sxc.Mvc.Engines;
 
 namespace Website.Pages
 {
     public class ContactModel : PageModel
     {
-        private readonly IRazorPartialToStringRenderer _renderer;
-        //private readonly IEmailService _emailer;
-        public ContactModel(IRazorPartialToStringRenderer renderer/*, IEmailService emailer*/)
+        private readonly IRenderRazor _renderer;
+        public ContactModel(IRenderRazor renderer)
         {
             _renderer = renderer;
-            //_emailer = emailer;
         }
         [BindProperty]
         public ContactForm ContactForm { get; set; }
         [TempData]
         public string PostResult { get; set; }
 
+        public async Task OnGetAsync()
+        {
+            InnerRender = await _renderer.RenderToStringAsync("RenderPartial/_RenderPartialMail",
+                new ContactForm
+                {
+                    Email = "something@somewhere",
+                    Message = "Hello message!",
+                    Name = "The Dude",
+                    Priority = Priority.Medium,
+                    Subject = "This is the subject"
+                });
+        }
+
         public async Task<IActionResult> OnPostAsync()
         {
-            var body = await _renderer.RenderPartialToStringAsync("RenderPartial/_RenderPartialMail", ContactForm);
-            //await _emailer.SendAsync(ContactForm.Name, ContactForm.Email, ContactForm.Subject, body);
+            var body = await _renderer.RenderToStringAsync("RenderPartial/_RenderPartialMail", ContactForm);
             PostResult = body; // "Check your specified pickup directory";
             return RedirectToPage();
         }
+
+
+        public string InnerRender;
     }
     public class ContactForm
     {

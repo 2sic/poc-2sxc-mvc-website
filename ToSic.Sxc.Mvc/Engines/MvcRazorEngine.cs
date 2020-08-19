@@ -1,130 +1,111 @@
-﻿//using System;
-//using System.Configuration;
-//using System.Globalization;
-//using System.IO;
-//using System.Runtime.CompilerServices;
-//using Microsoft.AspNetCore.Http;
-//using Microsoft.AspNetCore.Mvc.Razor.Compilation;
-//using ToSic.Eav.Documentation;
-//using ToSic.Sxc.Engines;
-//using ToSic.Sxc.Mvc.Code;
+﻿using System;
+using System.Configuration;
+using System.IO;
+using System.Threading.Tasks;
+using ToSic.Eav.Documentation;
+using ToSic.Sxc.Engines;
+using ToSic.Sxc.Mvc.Code;
+using ToSic.Sxc.Mvc.RazorPages;
 
-//namespace ToSic.Sxc.Mvc.Engines
-//{
-//    /// <summary>
-//    /// The razor engine, which compiles / runs engine templates
-//    /// </summary>
-//    [InternalApi_DoNotUse_MayChangeWithoutNotice("this is just fyi")]
-//    [EngineDefinition(Name = "Razor")]
+namespace ToSic.Sxc.Mvc.Engines
+{
+    /// <summary>
+    /// The razor engine, which compiles / runs engine templates
+    /// </summary>
+    [InternalApi_DoNotUse_MayChangeWithoutNotice("this is just fyi")]
+    [EngineDefinition(Name = "Razor")]
 
-//    public partial class MvcRazorEngine : EngineBase
-//    {
-//        [PrivateApi]
-//        protected RazorComponentBase Webpage { get; set; }
+    public partial class MvcRazorEngine : EngineBase
+    {
+        /// <inheritdoc />
+        [PrivateApi]
+        protected override void Init()
+        {
+            // in MVC we're always using V10 compatibility
+            CompatibilityAutoLoadJQueryAndRVT = false;
 
-//        /// <inheritdoc />
-//        [PrivateApi]
-//        protected override void Init()
-//        {
-//            try
-//            {
-//                InitWebpage();
-//            }
-//            // Catch web.config Error on DNNs upgraded to 7
-//            catch (ConfigurationErrorsException exc)
-//            {
-//                var e = new Exception("Configuration Error: Please follow this checklist to solve the problem: http://swisschecklist.com/en/i4k4hhqo/2Sexy-Content-Solve-configuration-error-after-upgrading-to-DotNetNuke-7", exc);
-//                throw e;
-//            }
-//        }
+            try
+            {
+                InitWebpage();
+            }
+            // Catch web.config Error on DNNs upgraded to 7
+            catch (ConfigurationErrorsException exc)
+            {
+                var e = new Exception("Configuration Error: Please follow this checklist to solve the problem: http://swisschecklist.com/en/i4k4hhqo/2Sexy-Content-Solve-configuration-error-after-upgrading-to-DotNetNuke-7", exc);
+                throw e;
+            }
+        }
 
-//        [PrivateApi]
-//        protected HttpContext HttpContext => null; // todo!
+        [PrivateApi]
+        public async Task<TextWriter> RenderTask()
+        {
+            Log.Add("will render into TextWriter");
+            try
+            {
+                if (string.IsNullOrEmpty(TemplatePath)) return null;
+                var dynCode = new MvcDynamicCode().Init(BlockBuilder, 10, Log);
 
-//        [PrivateApi]
-//        public void Render(TextWriter writer)
-//        {
-//            Log.Add("will render into TextWriter");
-//            try
-//            {
-//                writer.WriteLine("TODO - must execute page");
-//                //Webpage.ExecutePageHierarchy(new WebPageContext(HttpContext, Webpage, null), writer, Webpage);
-//            }
-//            catch (Exception maybeIEntityCast)
-//            {
-//                Sxc.Code.ErrorHelp.AddHelpIfKnownError(maybeIEntityCast);
-//                throw;
-//            }
-//        }
+                var compiler = Eav.Factory.Resolve<IRenderRazor>();
+                var result = await compiler.RenderToStringAsync(TemplatePath, new Object(), dynCode,
+                    rzv =>
+                    {
+                        if (rzv.RazorPage is IIsSxcRazorPage asSxc)
+                        {
+                            asSxc.DynCode = dynCode;
+                            asSxc.VirtualPath = TemplatePath;
+                            asSxc.Purpose = Purpose;
 
-//        /// <inheritdoc/>
-//        protected override string RenderTemplate()
-//        {
-//            Log.Add("will render razor template");
-//            var writer = new StringWriter();
-//            Render(writer);
-//            return writer.ToString();
-//        }
+                        }
 
-//        private object CreateWebPageInstance()
-//        {
-//            try
-//            {
-//                var compiledType = GetType(); // TODO!!!  // BuildManager.GetCompiledType(TemplatePath);
-//                object objectValue = null;
-//                if (compiledType != null)
-//                    objectValue = RuntimeHelpers.GetObjectValue(Activator.CreateInstance(compiledType));
-//                return objectValue;
-//            }
-//            catch (Exception ex)
-//            {
-//                Sxc.Code.ErrorHelp.AddHelpIfKnownError(ex);
-//                throw;
-//            }
-//        }
-
-//        private void InitWebpage()
-//        {
-//            if (string.IsNullOrEmpty(TemplatePath)) return;
-
-//            // WIP https://github.com/dotnet/aspnetcore/blob/master/src/Mvc/Mvc.Razor.RuntimeCompilation/src/RuntimeViewCompiler.cs#L397-L404
-//            //var compiler = Eav.Factory.Resolve<Microsoft.AspNetCore.Mvc.Razor.Compilation>();
-
-//            //var result = compiler.CompileAsync(TemplatePath);
-
-//            object objectValue = null; //RuntimeHelpers.GetObjectValue(result.Result.Type);
-            
-
-//            //var objectValue = RuntimeHelpers.GetObjectValue(CreateWebPageInstance());
-//            // ReSharper disable once JoinNullCheckWithUsage
-//            if (objectValue == null)
-//                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "The webpage found at '{0}' was not created.", TemplatePath));
-
-//            Webpage = objectValue as RazorComponentBase;
-
-//            if (Webpage == null)
-//                throw new InvalidOperationException(string.Format(CultureInfo.CurrentCulture, "The webpage at '{0}' must derive from RazorComponentBase.", TemplatePath));
-
-//            //Webpage.Context = HttpContext;
-//            Webpage.VirtualPath = TemplatePath;
-//            Webpage.Purpose = Purpose;
-
-//            InitHelpers(Webpage, 10);
-//        }
-
-//        private void InitHelpers(RazorComponentBase webPage, int compatibility)
-//        {
-//            // probably not needed: webPage.Html = new Razor.HtmlHelper();
-//            webPage.DynCode = new MvcDynamicCode().Init(BlockBuilder, compatibility, Log);
-
-//            #region New in 10.25 - ensure jquery is not included by default
-
-//            if (compatibility == 10) CompatibilityAutoLoadJQueryAndRVT = false;
-
-//            #endregion
-
-//        }
+                    });
+                var writer = new StringWriter();
+                writer.Write(result);
+                // todo: continue here 2020-08-19
+                return writer;
+            }
+            catch (Exception maybeIEntityCast)
+            {
+                Sxc.Code.ErrorHelp.AddHelpIfKnownError(maybeIEntityCast);
+                throw;
+            }
+        }
 
 
-//    }
-//}
+
+        /// <inheritdoc/>
+        protected override string RenderTemplate()
+        {
+            Log.Call();
+            var task = RenderTask();
+            task.Wait();
+            return task.Result.ToString();
+        }
+
+        private string InitWebpage()
+        {
+            if (string.IsNullOrEmpty(TemplatePath)) return null;
+            var dynCode = new MvcDynamicCode().Init(BlockBuilder, 10, Log);
+
+            var compiler = Eav.Factory.Resolve<IRenderRazor>();
+            var result = compiler.RenderToStringAsync(TemplatePath, new Object(), dynCode, 
+                rzv =>
+                {
+                    if (rzv.RazorPage is IIsSxcRazorPage asSxc)
+                    {
+                        asSxc.DynCode = dynCode;
+                        asSxc.VirtualPath = TemplatePath;
+                        asSxc.Purpose = Purpose;
+
+                    }
+
+                });
+            // todo: de-async!
+            return result.Result;
+
+            // WIP https://github.com/dotnet/aspnetcore/blob/master/src/Mvc/Mvc.Razor.RuntimeCompilation/src/RuntimeViewCompiler.cs#L397-L404
+            // maybe also https://stackoverflow.com/questions/48206993/how-to-load-asp-net-core-razor-view-dynamically-at-runtime
+            // later also check loading more DLLs on https://stackoverflow.com/questions/58685966/adding-assemblies-types-to-be-made-available-to-razor-page-at-runtime
+
+        }
+    }
+}

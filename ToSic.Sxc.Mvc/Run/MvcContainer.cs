@@ -9,14 +9,14 @@ namespace ToSic.Sxc.Mvc.Run
 {
     public class MvcContainer: IContainer
     {
-        public MvcContainer(int tenantId = TestConstants.TenantId, int pageId = TestConstants.BlogPage,
-            int id = TestConstants.BlogInstanceId, int appId = TestConstants.BlogApp, Guid? block = null)
+        public MvcContainer(int tenantId = TestConstants.TenantId, int pageId = TestConstants.BlogP,
+            int id = TestConstants.BlogI, int appId = TestConstants.BlogA, Guid? block = null)
         {
             TenantId = tenantId;
             PageId = pageId;
             Id = id;
             AppId = appId;
-            Block = block ?? TestConstants.BlogGuid;
+            Block = block ?? TestConstants.BlogB;
         }
 
         // Temp implementation, don't support im MVC
