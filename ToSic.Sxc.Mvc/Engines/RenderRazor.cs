@@ -11,8 +11,6 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Microsoft.AspNetCore.Routing;
-using ToSic.Sxc.Code;
-using ToSic.Sxc.Mvc.RazorPages;
 
 namespace ToSic.Sxc.Mvc.Engines
 {
@@ -33,18 +31,12 @@ namespace ToSic.Sxc.Mvc.Engines
         }
         #endregion
 
-        public async Task<string> RenderToStringAsync<TModel>(string partialName, TModel model, DynamicCodeRoot dynCode = null, Action<RazorView> configure = null)
+        public async Task<string> RenderToStringAsync<TModel>(string partialName, TModel model, Action<RazorView> configure = null)
         {
             var actionContext = GetActionContext();
             var partial = FindView(actionContext, partialName);
 
-            if (partial is RazorView rzv)
-            {
-                configure?.Invoke(rzv);
-                if (rzv.RazorPage is IIsSxcRazorPage asSxc)
-                    asSxc.DynCode = dynCode;
-
-            }
+            if (partial is RazorView rzv) configure?.Invoke(rzv);
 
             using (var output = new StringWriter())
             {

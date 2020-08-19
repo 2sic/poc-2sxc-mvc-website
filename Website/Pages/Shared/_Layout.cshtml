@@ -21,39 +21,36 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/EavDi">Eav.DI</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/EavCore">Eav.Core</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/SxcBlock">Sxc.Block</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Blog">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Components">Components</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/DynamicRazor">DynamicRazor</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Token">Engine-Token</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/EngineBlog">Engine-Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/RenderPartial/Contact">RP-Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/RenderPartial/Render2">V2</a>
-                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Basic Experiments
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Exp/Eav/EavDi">Test basic Eav DI and Map-Path</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Exp/Eav/EavCore">Use EAV to access an app state</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Exp/UsePartials/CallPartialViewWithViewParams">Call Partial View with ViewParams</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Exp/RenderPartial/Contact">Render Partial - Contact Form</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Exp/RenderPartial/Render2">Model-Inner-Render of wwwwroot-file</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Exp/PreconfiguredBase/Blog">Page which has a base class loading blog</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Exp/SpecialBase/CallingPartialWithViewParamsBase">Calling wwwroot component with ViewParams</a>
+                                <a class="nav-link text-dark" asp-area="" asp-page="/Exp/SpecialBase/CallWwwRunContent">Call RunContent on wwwroot</a>
+                                <div class="dropdown-divider"></div>
 
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Engine/TokenApp">Engine-Token</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Engine/Blog">Engine-Blog</a>
                         </li>
                     </ul>
                 </div>

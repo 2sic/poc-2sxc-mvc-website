@@ -1,7 +1,10 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using ToSic.Sxc.Blocks;
 using ToSic.Sxc.Mvc;
+using ToSic.Sxc.Mvc.Dev;
 using ToSic.Sxc.Mvc.Engines;
+using ToSic.Sxc.Mvc.RazorPages;
 
 namespace Website.Pages.RenderPartial
 {
@@ -15,12 +18,12 @@ namespace Website.Pages.RenderPartial
 
         public async Task OnGetAsync()
         {
-            var dynCode = SxcMvcTempEngine.CreateDynCode(TestConstants.BlogT, TestConstants.BlogP,
-                TestConstants.BlogI, TestConstants.BlogA, TestConstants.BlogB, null);
+            var dynCode = SxcMvcTempEngine.CreateDynCode(TestIds.Blog, null);
 
+            var path = "/wwwroot/2sxc/Blog App/_1 Main blog view.cshtml";
 
             InnerRender = await _renderer.RenderToStringAsync(
-                "/wwwroot/2sxc/Blog App/_1 Main blog view.cshtml",
+                path,
                 new ContactForm
                 {
                     Email = "something@somewhere",
@@ -28,8 +31,15 @@ namespace Website.Pages.RenderPartial
                     Name = "The Dude",
                     Priority = Priority.Medium,
                     Subject = "This is the subject"
-                },
-                dynCode);
+                }, rzv =>
+                {
+                    if (rzv.RazorPage is IIsSxcRazorPage asSxc)
+                    {
+                        asSxc.DynCode = dynCode;
+                        asSxc.VirtualPath = path;
+                        asSxc.Purpose = Purpose.WebView;
+                    }
+                });
         }
 
 

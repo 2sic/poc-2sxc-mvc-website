@@ -1,4 +1,5 @@
-﻿using ToSic.Sxc.Blocks;
+﻿using System;
+using ToSic.Sxc.Blocks;
 using ToSic.Sxc.Code;
 using ToSic.Sxc.Mvc.Code;
 
@@ -17,25 +18,18 @@ namespace ToSic.Sxc.Mvc.RazorPages
         private DynamicCodeRoot _dynCode;
         #endregion
 
-        public IBlockBuilder BlockBuilder
+        public virtual IBlockBuilder BlockBuilder
         {
             get
             {
                 if (_blockLoaded) return _blockBuilder;
+                if(_dynCode == null) throw new Exception($"{nameof(BlockBuilder)} is empty, and DynCode isn't created - can't continue. Requires DynCode to be attached");
                 _blockLoaded = true;
-                //var context = new InstanceContext(
-                //    new MvcTenant(new MvcPortalSettings()),
-                //    new MvcPage(PageId, null),
-                //    new MvcContainer(id: Id, pageId: PageId, appId: AppId, block: Block),
-                //    new MvcUser()
-                //);
-                //_blockBuilder = new BlockFromModule().Init(context, Log).BlockBuilder as BlockBuilder;
-                _blockBuilder = SxcMvcTempEngine.CreateBuilder(TestConstants.TenantId, PageId, Id, AppId, Block, Log);
-                return _blockBuilder;
+                return _blockBuilder = _dynCode.BlockBuilder;
             }
         }
-        private IBlockBuilder _blockBuilder;
-        private bool _blockLoaded;
+        protected IBlockBuilder _blockBuilder;
+        protected bool _blockLoaded;
 
     }
 }

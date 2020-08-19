@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace ToSic.Sxc.Mvc.RazorPages
+namespace ToSic.Sxc.Mvc.RazorPages.Exp
 {
-    public partial class Page
+    public partial class PageBaseLoadingBlogOnly
     {
         public string CreateInstancePath { get; set; }
 

@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using ToSic.Eav.Apps.Run;
 using ToSic.Eav.Logging;
 using ToSic.Eav.Run;
+using ToSic.Sxc.Mvc.Dev;
 using ToSic.Sxc.Web;
 
 namespace ToSic.Sxc.Mvc.Run
 {
     public class MvcContainer: IContainer
     {
-        public MvcContainer(int tenantId = TestConstants.TenantId, int pageId = TestConstants.BlogP,
-            int id = TestConstants.BlogI, int appId = TestConstants.BlogA, Guid? block = null)
+        public MvcContainer(int? tenantId = null, int? id = null, int? appId = null, Guid? block = null)
         {
-            TenantId = tenantId;
-            PageId = pageId;
-            Id = id;
-            AppId = appId;
-            Block = block ?? TestConstants.BlogB;
+            TenantId = tenantId ?? TestIds.Blog.Zone;
+            Id = id ?? TestIds.Blog.Container;
+            AppId = appId ?? TestIds.Blog.App;
+            Block = block ?? TestIds.Blog.Block;
         }
 
         // Temp implementation, don't support im MVC
@@ -24,15 +23,12 @@ namespace ToSic.Sxc.Mvc.Run
 
         /// <inheritdoc />
         public int Id { get; }
-        
-        /// <inheritdoc />
-        public int PageId { get; }
 
         /// <inheritdoc />
         public int TenantId { get; }
 
         /// <inheritdoc />
-        public bool IsPrimary => BlockIdentifier.AppId == TestConstants.PrimaryApp;
+        public bool IsPrimary => BlockIdentifier.AppId == TestIds.PrimaryApp;
 
         public List<KeyValuePair<string, string>> Parameters
         {

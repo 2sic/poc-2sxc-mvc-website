@@ -4,9 +4,9 @@ using ToSic.Sxc.Mvc.Code;
 using ToSic.Sxc.Mvc.Run;
 using ToSic.Sxc.Mvc.TestStuff;
 
-namespace ToSic.Sxc.Mvc.RazorPages
+namespace ToSic.Sxc.Mvc.RazorPages.Exp
 {
-    public partial class Page
+    public partial class PageBaseLoadingBlogOnly
     {
         #region DynCode 
 

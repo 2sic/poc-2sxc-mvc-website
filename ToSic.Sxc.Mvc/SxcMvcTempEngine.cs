@@ -5,6 +5,7 @@ using ToSic.Eav.Logging;
 using ToSic.Sxc.Blocks;
 using ToSic.Sxc.Code;
 using ToSic.Sxc.Mvc.Code;
+using ToSic.Sxc.Mvc.Dev;
 using ToSic.Sxc.Mvc.Run;
 using ToSic.Sxc.Mvc.TestStuff;
 
@@ -22,10 +23,19 @@ namespace ToSic.Sxc.Mvc
             var blockBuilder = CreateBuilder(zoneId, pageId, containerId, appId, blockGuid, Log);
             return blockBuilder.Render();
         }
+        public HtmlString Render(InstanceId id)
+        {
+            var blockBuilder = CreateBuilder(id.Zone, id.Page, id.Container, id.App, id.Block, Log);
+            return blockBuilder.Render();
+        }
 
         public static DynamicCodeRoot CreateDynCode(int zoneId, int pageId, int containerId, int appId, Guid blockGuid,
             ILog log) =>
             new MvcDynamicCode().Init(CreateBuilder(zoneId, pageId, containerId, appId, blockGuid, log), log);
+
+        public static DynamicCodeRoot CreateDynCode(InstanceId id, ILog log) =>
+            new MvcDynamicCode().Init(CreateBuilder(id.Zone, id.Page, id.Container, id.App, id.Block, log), log);
+
 
         public static IBlockBuilder CreateBuilder(int zoneId, int pageId, int containerId, int appId, Guid blockGuid, ILog log)
         {
@@ -38,7 +48,7 @@ namespace ToSic.Sxc.Mvc
             => new InstanceContext(
                 new MvcTenant(new MvcPortalSettings(zoneId)),
                 new MvcPage(pageId, null),
-                new MvcContainer(zoneId, pageId: pageId, id: containerId, appId: appId, block: blockGuid),
+                new MvcContainer(tenantId: zoneId, id: containerId, appId: appId, block: blockGuid),
                 new MvcUser()
             );
     }

@@ -46,7 +46,7 @@ namespace ToSic.Sxc.Mvc.Engines
                 var dynCode = new MvcDynamicCode().Init(BlockBuilder, 10, Log);
 
                 var compiler = Eav.Factory.Resolve<IRenderRazor>();
-                var result = await compiler.RenderToStringAsync(TemplatePath, new Object(), dynCode,
+                var result = await compiler.RenderToStringAsync(TemplatePath, new Object(),
                     rzv =>
                     {
                         if (rzv.RazorPage is IIsSxcRazorPage asSxc)
@@ -56,7 +56,6 @@ namespace ToSic.Sxc.Mvc.Engines
                             asSxc.Purpose = Purpose;
 
                         }
-
                     });
                 var writer = new StringWriter();
                 writer.Write(result);
@@ -87,7 +86,7 @@ namespace ToSic.Sxc.Mvc.Engines
             var dynCode = new MvcDynamicCode().Init(BlockBuilder, 10, Log);
 
             var compiler = Eav.Factory.Resolve<IRenderRazor>();
-            var result = compiler.RenderToStringAsync(TemplatePath, new Object(), dynCode, 
+            var result = compiler.RenderToStringAsync(TemplatePath, new Object(), 
                 rzv =>
                 {
                     if (rzv.RazorPage is IIsSxcRazorPage asSxc)

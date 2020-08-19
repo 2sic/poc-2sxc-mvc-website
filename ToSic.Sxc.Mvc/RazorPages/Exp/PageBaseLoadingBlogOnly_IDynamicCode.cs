@@ -11,9 +11,9 @@ using ToSic.Sxc.Data;
 using ToSic.Sxc.DataSources;
 using ToSic.Sxc.Web;
 
-namespace ToSic.Sxc.Mvc.RazorPages
+namespace ToSic.Sxc.Mvc.RazorPages.Exp
 {
-    public partial class Page: IDynamicCode
+    public partial class PageBaseLoadingBlogOnly: IDynamicCode
     {
 
         #region Content, Header, etc. and List

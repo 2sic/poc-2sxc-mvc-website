@@ -21,7 +21,7 @@ namespace ToSic.Sxc.Mvc
             bool showDrafts,
             ILog parentLog)
         {
-            var log = new Log("Dnn.Factry", parentLog);
+            var log = new Log("Mvc.Factry", parentLog);
             log.Add($"Create App(z:{zoneId}, a:{appId}, tenantObj:{tenant != null}, publishingEnabled: {publishingEnabled}, showDrafts: {showDrafts}, parentLog: {parentLog != null})");
             var appStuff = Eav.Factory.Resolve<App>().Init(new AppIdentity(zoneId, appId),
                 ConfigurationProvider.Build(showDrafts, publishingEnabled, new LookUpEngine(parentLog)),
