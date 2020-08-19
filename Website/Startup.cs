@@ -1,18 +1,15 @@
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
+using RazorPartialToString.Services;
 using ToSic.Sxc.Mvc;
+
 
 namespace Website
 {
@@ -35,7 +32,7 @@ namespace Website
             // Add SxcEngineTest
             services.AddTransient<SxcMvcTempEngine>();
 
-            // Add razor pages dynamic compilation
+            // Add razor pages dynamic compilation WIP
             services.AddRazorPages()
                 // experiment
                 // https://github.com/aspnet/samples/blob/master/samples/aspnetcore/mvc/runtimecompilation/MyApp/Startup.cs#L26
@@ -46,7 +43,7 @@ namespace Website
                     var libraryPath = Path.GetFullPath(Path.Combine(HostEnvironment.ContentRootPath, configuredPath)); 
                     options.FileProviders.Add(new PhysicalFileProvider(libraryPath));
                 });
-            
+
             // enable use of HttpContext
             services.AddHttpContextAccessor();
 
@@ -55,6 +52,9 @@ namespace Website
             services.AddSingleton<IUrlHelperFactory, UrlHelperFactory>();
             services.AddScoped(it => it.GetService<IUrlHelperFactory>()
                 .GetUrlHelper(it.GetService<IActionContextAccessor>().ActionContext));
+
+            // Try to get partial to string rendering
+            services.AddTransient<IRazorPartialToStringRenderer, RazorPartialToStringRenderer>();
 
             Plumbing.EavConfiguration.ConfigureIoC(services);
         }

@@ -1,5 +1,6 @@
 ﻿using ToSic.Eav.Apps.Run;
 using ToSic.Sxc.Blocks;
+using ToSic.Sxc.Code;
 using ToSic.Sxc.Mvc.Code;
 using ToSic.Sxc.Mvc.Run;
 using ToSic.Sxc.Mvc.TestStuff;
@@ -10,8 +11,13 @@ namespace ToSic.Sxc.Mvc.RazorPages
     {
         #region DynCode 
 
-        protected MvcDynamicCode DynCode => _dynCode ?? (_dynCode = new MvcDynamicCode().Init(BlockBuilder, Log));
-        private MvcDynamicCode _dynCode;
+        protected internal DynamicCodeRoot DynCode
+        {
+            get => _dynCode ?? (_dynCode = new MvcDynamicCode().Init(BlockBuilder, Log));
+            set => _dynCode = value;
+        }
+
+        private DynamicCodeRoot _dynCode;
         #endregion
 
         public IBlockBuilder BlockBuilder

@@ -9,7 +9,10 @@ namespace ToSic.Sxc.Mvc.Run
         public string IdentityToken => "mvcuser:1";
         public Guid? Guid => System.Guid.Empty;
         public List<int> Roles => new List<int>();
-        public bool IsSuperUser => false;
+
+        // temp: set to true, so we can see better errors
+
+        public bool IsSuperUser => true;
         public bool IsAdmin => false;
         public bool IsDesigner => false;
     }

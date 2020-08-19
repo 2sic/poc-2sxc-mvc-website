@@ -1,0 +1,17 @@
+﻿@page
+@using ToSic.Sxc.Mvc
+@inject SxcMvcTempEngine SxcEngine
+@model Website.Pages.EngineBlogModel
+@{
+    ViewData["Title"] = "EngineBlog";
+}
+
+<h1>Engine Blog</h1>
+
+<h2>Test with Token </h2>
+Render: SxcEngine.Render(TestConstants.TokenZoneId, TestConstants.TokenPage, TestConstants.TokenInstance, TestConstants.TokenAppId, TestConstants.TokenGuid)
+
+<hr />
+
+<h2>Test with Blog</h2>
+Render: @SxcEngine.Render(TestConstants.TenantId, TestConstants.BlogPage, TestConstants.BlogInstanceId, TestConstants.BlogApp, TestConstants.BlogGuid)

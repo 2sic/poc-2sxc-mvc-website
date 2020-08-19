@@ -6,7 +6,7 @@ using ToSic.Eav.Logging.Simple;
 namespace ToSic.Sxc.Mvc.RazorPages
 {
     // test, doesn't do anything yet
-    public partial class SxcRazorPage<TModel>: Microsoft.AspNetCore.Mvc.Razor.RazorPage<TModel>, IHasLog
+    public partial class SxcRazorPage<TModel>: Microsoft.AspNetCore.Mvc.Razor.RazorPage<TModel>
     {
         #region Constructor / DI
         protected SxcRazorPage()
