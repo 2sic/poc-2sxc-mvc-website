@@ -30,6 +30,7 @@
 
   <ItemGroup>
     <Folder Include="Engine\" />
+    <Folder Include="WebApi\" />
     <Folder Include="wwwroot\System\Sxc\" />
   </ItemGroup>
 
