@@ -31,7 +31,7 @@ namespace Website
         public void ConfigureServices(IServiceCollection services)
         {
             // Add SxcEngineTest
-            services.AddTransient<SxcMvcTempEngine>();
+            services.AddTransient<SxcMvc>();
 
             // Add razor pages dynamic compilation WIP
             services.AddRazorPages()
@@ -47,6 +47,9 @@ namespace Website
 
             // enable use of HttpContext
             services.AddHttpContextAccessor();
+
+            // enable webapi
+            services.AddControllers();
 
             // enable use of UrlHelper for AbsolutePath
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
@@ -85,6 +88,7 @@ namespace Website
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
             });
         }
     }

@@ -18,7 +18,7 @@ namespace Website.Pages.RenderPartial
 
         public async Task OnGetAsync()
         {
-            var dynCode = SxcMvcTempEngine.CreateDynCode(TestIds.Blog, null);
+            var dynCode = SxcMvc.CreateDynCode(TestIds.Blog, null);
 
             var path = "/wwwroot/2sxc/Blog App/_1 Main blog view.cshtml";
 

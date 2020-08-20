@@ -47,9 +47,8 @@ namespace ToSic.Sxc.Mvc.RazorPages.Exp
         {
             get
             {
-                if (_blockLoaded) return _blockBuilder;
-                _blockLoaded = true;
-                _blockBuilder = SxcMvcTempEngine.CreateBuilder(TestIds.PrimaryZone, PageId, Id, AppId, Block, Log);
+                if (_blockBuilder != null) return _blockBuilder;
+                _blockBuilder = SxcMvc.CreateBuilder(TestIds.PrimaryZone, PageId, Id, AppId, Block, Log);
                 return _blockBuilder;
             }
         }

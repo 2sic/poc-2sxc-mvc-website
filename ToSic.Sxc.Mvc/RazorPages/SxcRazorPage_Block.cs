@@ -22,14 +22,13 @@ namespace ToSic.Sxc.Mvc.RazorPages
         {
             get
             {
-                if (_blockLoaded) return _blockBuilder;
+                if (_blockBuilder != null) return _blockBuilder;
                 if(_dynCode == null) throw new Exception($"{nameof(BlockBuilder)} is empty, and DynCode isn't created - can't continue. Requires DynCode to be attached");
-                _blockLoaded = true;
                 return _blockBuilder = _dynCode.BlockBuilder;
             }
+            protected set => _blockBuilder = value;
         }
         protected IBlockBuilder _blockBuilder;
-        protected bool _blockLoaded;
 
     }
 }

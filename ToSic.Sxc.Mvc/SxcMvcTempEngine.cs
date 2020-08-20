@@ -11,27 +11,16 @@ using ToSic.Sxc.Mvc.TestStuff;
 
 namespace ToSic.Sxc.Mvc
 {
-    public class SxcMvcTempEngine: HasLog
+    public class SxcMvc: HasLog
     {
         // Empty constructor for DI for now
-        public SxcMvcTempEngine() : base("Mvc.View") { }
+        public SxcMvc() : base("Mvc.View") { }
 
-        public string Test() => "hello test from " + nameof(SxcMvcTempEngine);
-
-        public HtmlString Render(int zoneId, int pageId, int containerId, int appId, Guid blockGuid)
-        {
-            var blockBuilder = CreateBuilder(zoneId, pageId, containerId, appId, blockGuid, Log);
-            return blockBuilder.Render();
-        }
         public HtmlString Render(InstanceId id)
         {
             var blockBuilder = CreateBuilder(id.Zone, id.Page, id.Container, id.App, id.Block, Log);
             return blockBuilder.Render();
         }
-
-        public static DynamicCodeRoot CreateDynCode(int zoneId, int pageId, int containerId, int appId, Guid blockGuid,
-            ILog log) =>
-            new MvcDynamicCode().Init(CreateBuilder(zoneId, pageId, containerId, appId, blockGuid, log), log);
 
         public static DynamicCodeRoot CreateDynCode(InstanceId id, ILog log) =>
             new MvcDynamicCode().Init(CreateBuilder(id.Zone, id.Page, id.Container, id.App, id.Block, log), log);
@@ -44,7 +33,7 @@ namespace ToSic.Sxc.Mvc
             return block.BlockBuilder;
         }
 
-        public static InstanceContext CreateContext(int zoneId, int pageId, int containerId, int appId, Guid blockGuid)
+        private static InstanceContext CreateContext(int zoneId, int pageId, int containerId, int appId, Guid blockGuid)
             => new InstanceContext(
                 new MvcTenant(new MvcPortalSettings(zoneId)),
                 new MvcPage(pageId, null),
