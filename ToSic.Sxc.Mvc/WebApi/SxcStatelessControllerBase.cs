@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using ToSic.Eav.Logging;
 using ToSic.Eav.Logging.Simple;
 
-namespace Website.WebApi
+namespace ToSic.Sxc.Mvc.WebApi
 {
     public abstract class SxcStatelessControllerBase : ControllerBase, IHasLog
     {

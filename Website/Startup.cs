@@ -1,6 +1,7 @@
 using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.AspNetCore.Mvc.Routing;
 using Microsoft.Extensions.Configuration;
@@ -48,8 +49,9 @@ namespace Website
             // enable use of HttpContext
             services.AddHttpContextAccessor();
 
-            // enable webapi
-            services.AddControllers();
+            // enable webapi - include all controllers in the Sxc.Mvc assembly
+            services.AddControllers()
+                .PartManager.ApplicationParts.Add(new AssemblyPart(typeof(SxcMvc).Assembly));
 
             // enable use of UrlHelper for AbsolutePath
             services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();

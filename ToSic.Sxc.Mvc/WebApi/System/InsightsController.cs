@@ -1,7 +1,8 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using ToSic.Sxc.Web.WebApi.System;
 
-namespace Website.WebApi
+namespace ToSic.Sxc.Mvc.WebApi.System
 {
     [Route(WebApiConstants.DefaultRoute)]
     [ApiController]
@@ -30,9 +31,9 @@ namespace Website.WebApi
 
         #region Construction and Security
 
-        protected ToSic.Sxc.Web.WebApi.System.Ins Insights =>
-            _insights ??= new ToSic.Sxc.Web.WebApi.System.Ins(Log, ThrowIfNotSuperuser, (string msg) => new Exception(msg));
-        private ToSic.Sxc.Web.WebApi.System.Ins _insights;
+        protected Insights Insights =>
+            _insights ??= new Insights(Log, ThrowIfNotSuperuser, (string msg) => new Exception(msg));
+        private Insights _insights;
 
 
         private void ThrowIfNotSuperuser()
