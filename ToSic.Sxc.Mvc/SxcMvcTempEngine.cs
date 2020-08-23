@@ -19,7 +19,7 @@ namespace ToSic.Sxc.Mvc
         public HtmlString Render(InstanceId id)
         {
             var blockBuilder = CreateBuilder(id.Zone, id.Page, id.Container, id.App, id.Block, Log);
-            return blockBuilder.Render();
+            return new HtmlString(blockBuilder.Render());
         }
 
         public static DynamicCodeRoot CreateDynCode(InstanceId id, ILog log) =>

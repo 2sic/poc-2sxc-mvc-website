@@ -13,6 +13,12 @@ namespace ToSic.Sxc.Mvc.Run
     {
         public MvcTenant() : base(new MvcPortalSettings()) { }
 
+        public override ITenant Init(int tenantId)
+        {
+            UnwrappedContents = new MvcPortalSettings(tenantId);
+            return this;
+        }
+
         /// <inheritdoc />
         public override string DefaultLanguage => UnwrappedContents.DefaultLanguage;
 
@@ -32,6 +38,8 @@ namespace ToSic.Sxc.Mvc.Run
 
         /// <inheritdoc />
         public override string ContentPath => UnwrappedContents.HomePath;
+
+        public override int ZoneId => UnwrappedContents.Id;
 
         public MvcTenant(MvcPortalSettings settings) : base(settings ?? new MvcPortalSettings()) { }
     }

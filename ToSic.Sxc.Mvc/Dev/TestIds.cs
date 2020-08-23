@@ -17,6 +17,8 @@ namespace ToSic.Sxc.Mvc.Dev
         public static InstanceId Token = new InstanceId(128, 4062, 1262,9170, new Guid("584b7398-8517-4bdf-b05d-71d64b935f4f"));
         //public const string TokenAppGuid = "b255e493-63b8-4c9a-b36a-a6487730f78f";
 
+        // public static RazorTutorial = new InstanceId();
+
     }
 }
 

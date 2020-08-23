@@ -38,6 +38,7 @@ namespace ToSic.Sxc.Mvc.Run
             //sc.AddTransient<IAppRepositoryLoader, DnnAppFileSystemLoader>();
             sc.AddTransient<IHttp, HttpAbstraction>();
             sc.AddTransient<IRenderingHelper, MvcRenderingHelper>();
+            sc.AddTransient<IZoneMapper, MvcZoneMapper>();
 
 
             // The file-importer - temporarily itself
