@@ -9,9 +9,13 @@ using ToSic.Sxc.Blocks;
 using ToSic.Sxc.Mvc.Run;
 using ToSic.Sxc.WebApi.App;
 
+
+// TODO: #MissingFeature not yet implemented create/update/delete
+// TODO: #MissingFeature not yet implemented GetContext using current context
+
 namespace ToSic.Sxc.Mvc.WebApi.App
 {
-    [Route(WebApiConstants.Root + "/app/{appPath}/")]
+    [Route(WebApiConstants.Root + "/app/{appPath}/content/")]
     [ApiController]
     public class AppContentController: SxcStatelessControllerBase
     {
@@ -60,14 +64,6 @@ namespace ToSic.Sxc.Mvc.WebApi.App
         }
 
 
-        //[HttpGet]
-        //[AllowAnonymous]   // will check security internally, so assume no requirements
-        //public Dictionary<string, object> GetOne(string contentType, Guid guid, string appPath = null)
-        //    => GetAndSerializeOneAfterSecurityChecks(contentType,
-        //        entityApi => entityApi.GetOrThrow(contentType, guid), appPath);
-
-
-
         /// <summary>
         /// Preprocess security / context, then get the item based on an passed in method, 
         /// ...then process/finish
@@ -76,13 +72,11 @@ namespace ToSic.Sxc.Mvc.WebApi.App
         /// <param name="getOne"></param>
         /// <param name="appPath"></param>
         /// <returns></returns>
-        private Dictionary<string, object> GetAndSerializeOneAfterSecurityChecks(string contentType, Func<EntityApi, IEntity> getOne, string appPath)
-        {
-            return Eav.Factory.Resolve<AppContent>().Init(Log).GetOne(GetContext(), BlockBuilder, contentType, getOne, appPath);
-        }
-
+        private Dictionary<string, object> GetAndSerializeOneAfterSecurityChecks(string contentType, Func<EntityApi, IEntity> getOne, string appPath) 
+            => Eav.Factory.Resolve<AppContent>().Init(Log).GetOne(GetContext(), BlockBuilder, contentType, getOne, appPath);
 
         #endregion
+
 
     }
 }
