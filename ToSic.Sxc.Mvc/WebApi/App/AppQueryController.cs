@@ -36,7 +36,7 @@ namespace ToSic.Sxc.Mvc.WebApi.App
             string appPath,
             string name,
             [FromQuery] string stream = null
-        ) => new AppQuery().Init(Log).PublicQuery(GetContext(), appPath, name, stream, BlockBuilder);
+        ) => new AppQuery().Init(Log).PublicQuery(GetContext(), appPath, name, stream, NoBlock);
 
     }
 }

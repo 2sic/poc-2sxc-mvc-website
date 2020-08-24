@@ -43,7 +43,7 @@ namespace ToSic.Sxc.Mvc.Engines
             try
             {
                 if (string.IsNullOrEmpty(TemplatePath)) return null;
-                var dynCode = new MvcDynamicCode().Init(BlockBuilder, 10, Log);
+                var dynCode = new MvcDynamicCode().Init(Block, 10, Log);
 
                 var compiler = Eav.Factory.Resolve<IRenderRazor>();
                 var result = await compiler.RenderToStringAsync(TemplatePath, new Object(),
@@ -83,7 +83,7 @@ namespace ToSic.Sxc.Mvc.Engines
         private string InitWebpage()
         {
             if (string.IsNullOrEmpty(TemplatePath)) return null;
-            var dynCode = new MvcDynamicCode().Init(BlockBuilder, 10, Log);
+            var dynCode = new MvcDynamicCode().Init(Block, 10, Log);
 
             var compiler = Eav.Factory.Resolve<IRenderRazor>();
             var result = compiler.RenderToStringAsync(TemplatePath, new Object(), 

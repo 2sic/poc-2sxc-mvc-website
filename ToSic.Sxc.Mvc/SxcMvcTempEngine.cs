@@ -19,18 +19,18 @@ namespace ToSic.Sxc.Mvc
         public HtmlString Render(InstanceId id)
         {
             var blockBuilder = CreateBuilder(id.Zone, id.Page, id.Container, id.App, id.Block, Log);
-            return new HtmlString(blockBuilder.Render());
+            return new HtmlString(blockBuilder.BlockBuilder.Render());
         }
 
         public static DynamicCodeRoot CreateDynCode(InstanceId id, ILog log) =>
             new MvcDynamicCode().Init(CreateBuilder(id.Zone, id.Page, id.Container, id.App, id.Block, log), log);
 
 
-        public static IBlockBuilder CreateBuilder(int zoneId, int pageId, int containerId, int appId, Guid blockGuid, ILog log)
+        public static IBlock CreateBuilder(int zoneId, int pageId, int containerId, int appId, Guid blockGuid, ILog log)
         {
             var context = CreateContext(zoneId, pageId, containerId, appId, blockGuid);
             var block = new BlockFromModule().Init(context, log);
-            return block.BlockBuilder;
+            return block;
         }
 
         private static InstanceContext CreateContext(int zoneId, int pageId, int containerId, int appId, Guid blockGuid)

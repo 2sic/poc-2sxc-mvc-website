@@ -10,14 +10,14 @@ namespace ToSic.Sxc.Mvc.RazorPages.Exp
     {
         #region DynCode 
 
-        protected MvcDynamicCode DynCode => _dynCode ?? (_dynCode = new MvcDynamicCode().Init(BlockBuilder, Log));
+        protected MvcDynamicCode DynCode => _dynCode ??= new MvcDynamicCode().Init(Block, Log);
         private MvcDynamicCode _dynCode;
         #endregion
-        public IBlockBuilder BlockBuilder
+        public IBlock Block 
         {
             get
             {
-                if (_blockLoaded) return _blockBuilder;
+                if (_blockLoaded) return _block;
                 _blockLoaded = true;
                 var context = new InstanceContext(
                     new MvcTenant(new MvcPortalSettings()),
@@ -25,11 +25,11 @@ namespace ToSic.Sxc.Mvc.RazorPages.Exp
                     new MvcContainer(),
                     new MvcUser()
                 );
-                _blockBuilder = new BlockFromModule().Init(context, Log).BlockBuilder as BlockBuilder;
-                return _blockBuilder;
+                _block = new BlockFromModule().Init(context, Log);
+                return _block;
             }
         }
-        private BlockBuilder _blockBuilder;
+        private IBlock _block;
         private bool _blockLoaded;
 
     }

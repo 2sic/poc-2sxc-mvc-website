@@ -32,8 +32,6 @@ namespace ToSic.Sxc.Mvc.WebApi.App
             return context;
         }
 
-        private IBlockBuilder BlockBuilder => null;
-
         #region Get List / all of a certain content-type
         /// <summary>
         /// Get all Entities of specified Type
@@ -41,7 +39,7 @@ namespace ToSic.Sxc.Mvc.WebApi.App
         [HttpGet("{contentType}")]
         [AllowAnonymous]   // will check security internally, so assume no requirements
         public IEnumerable<Dictionary<string, object>> GetEntities(string contentType, string appPath = null)
-            => Eav.Factory.Resolve<AppContent>().Init(Log).GetItems(GetContext(), contentType, BlockBuilder, appPath);
+            => Eav.Factory.Resolve<AppContent>().Init(Log).GetItems(GetContext(), contentType, NoBlock, appPath);
 
         #endregion
 
@@ -73,7 +71,7 @@ namespace ToSic.Sxc.Mvc.WebApi.App
         /// <param name="appPath"></param>
         /// <returns></returns>
         private Dictionary<string, object> GetAndSerializeOneAfterSecurityChecks(string contentType, Func<EntityApi, IEntity> getOne, string appPath) 
-            => Eav.Factory.Resolve<AppContent>().Init(Log).GetOne(GetContext(), BlockBuilder, contentType, getOne, appPath);
+            => Eav.Factory.Resolve<AppContent>().Init(Log).GetOne(GetContext(), NoBlock, contentType, getOne, appPath);
 
         #endregion
 

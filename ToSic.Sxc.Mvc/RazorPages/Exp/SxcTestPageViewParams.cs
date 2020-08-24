@@ -22,8 +22,8 @@ namespace ToSic.Sxc.Mvc.RazorPages.Exp
         public int AppId => _appId ?? (_appId = GetNumberFromViewData("AppId")).Value;
         private int? _appId;
 
-        public Guid Block => _block ?? (_block = GetGuidFromViewData("Block")).Value;
-        private Guid? _block;
+        public Guid BlockGuid => _blockGuid ?? (_blockGuid = GetGuidFromViewData("Block")).Value;
+        private Guid? _blockGuid;
 
         private int GetNumberFromViewData(string name)
         {
@@ -43,13 +43,13 @@ namespace ToSic.Sxc.Mvc.RazorPages.Exp
         #endregion
 
 
-        public override IBlockBuilder BlockBuilder
+        public override IBlock Block 
         {
             get
             {
-                if (_blockBuilder != null) return _blockBuilder;
-                _blockBuilder = SxcMvc.CreateBuilder(TestIds.PrimaryZone, PageId, Id, AppId, Block, Log);
-                return _blockBuilder;
+                if (_block != null) return _block;
+                _block = SxcMvc.CreateBuilder(TestIds.PrimaryZone, PageId, Id, AppId, BlockGuid, Log);
+                return _block;
             }
         }
 

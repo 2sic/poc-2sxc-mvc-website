@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
 using ToSic.Eav.Logging;
 using ToSic.Eav.Logging.Simple;
+using ToSic.Sxc.Blocks;
 
 namespace ToSic.Sxc.Mvc.WebApi
 {
@@ -24,6 +25,12 @@ namespace ToSic.Sxc.Mvc.WebApi
             // todo: get this to work
             // ControllerContext.HttpContext.Response.RegisterForDispose(_logWrapper);
         }
+
+        #region Dummy Content-Block, as still stateless
+
+        protected IBlock NoBlock => null;
+
+        #endregion
 
         /// <inheritdoc />
         public ILog Log { get; }

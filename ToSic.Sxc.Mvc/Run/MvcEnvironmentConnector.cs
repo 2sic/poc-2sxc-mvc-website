@@ -23,12 +23,12 @@ namespace ToSic.Sxc.Mvc.Run
         }
 
 
-        public void SetAppId(IContainer instance, IAppEnvironment env, int? appId, ILog parentLog) => throw new NotImplementedException();
+        public void SetAppId(IContainer instance, int? appId, ILog parentLog) => throw new NotImplementedException();
 
         public void SetPreview(int instanceId, Guid previewTemplateGuid) => throw new NotImplementedException();
 
         public void SetContentGroup(int instanceId, bool wasCreated, Guid guid) => throw new NotImplementedException();
 
-        public void UpdateTitle(IBlockBuilder blockBuilder, IEntity titleItem) => throw new NotImplementedException();
+        public void UpdateTitle(IBlock block, IEntity titleItem) => throw new NotImplementedException();
     }
 }

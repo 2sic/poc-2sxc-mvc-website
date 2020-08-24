@@ -11,24 +11,24 @@ namespace ToSic.Sxc.Mvc.RazorPages
 
         public DynamicCodeRoot DynCode
         {
-            get => _dynCode ?? (_dynCode = new MvcDynamicCode().Init(BlockBuilder, Log));
+            get => _dynCode ?? (_dynCode = new MvcDynamicCode().Init(Block, Log));
             set => _dynCode = value;
         }
 
         private DynamicCodeRoot _dynCode;
         #endregion
 
-        public virtual IBlockBuilder BlockBuilder
+        public virtual IBlock Block 
         {
             get
             {
-                if (_blockBuilder != null) return _blockBuilder;
+                if (_block != null) return _block;
                 if(_dynCode == null) throw new Exception($"{nameof(BlockBuilder)} is empty, and DynCode isn't created - can't continue. Requires DynCode to be attached");
-                return _blockBuilder = _dynCode.BlockBuilder;
+                return _block = _dynCode.Block;
             }
-            protected set => _blockBuilder = value;
+            protected set => _block = value;
         }
-        protected IBlockBuilder _blockBuilder;
+        protected IBlock _block;
 
     }
 }
