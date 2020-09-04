@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3+ywWwjfz3pYT816+4u5TWV6LJNTYJfbhGcU7jNLpGFA/T0lSpb6bTeJ1tYes/7lKF6uAIgOOpUgUoh2OuV9OA==",
+  "dgSpecHash": "6Y/+2+lET7GEgAlCya2ONBOLHRDQ2f8vb67NL1KL0C+YGnwOD/WMhX1gN4o07qADnuhcEzQvHt0jKwGiTN6dKg==",
   "success": true,
-  "projectFilePath": "C:\\Projects\\poc-2sxc-mvc-website\\ExpRazorClassLibrary\\ExpRazorClassLibrary.csproj",
+  "projectFilePath": "C:\\Projects\\2sxc\\poc-2sxc-mvc-website\\ExpRazorClassLibrary\\ExpRazorClassLibrary.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

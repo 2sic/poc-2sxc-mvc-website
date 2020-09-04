@@ -7,6 +7,5 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// This is needed for unit testing
-[assembly: InternalsVisibleTo("ToSic.Sxc.Mvc")]
+// This is needed for our code to access internal-properties
 [assembly: InternalsVisibleTo("Website")]

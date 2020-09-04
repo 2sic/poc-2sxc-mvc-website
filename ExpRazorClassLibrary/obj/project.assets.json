@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Projects\\poc-2sxc-mvc-website\\ExpRazorClassLibrary\\ExpRazorClassLibrary.csproj",
+      "projectUniqueName": "C:\\Projects\\2sxc\\poc-2sxc-mvc-website\\ExpRazorClassLibrary\\ExpRazorClassLibrary.csproj",
       "projectName": "ExpRazorClassLibrary",
-      "projectPath": "C:\\Projects\\poc-2sxc-mvc-website\\ExpRazorClassLibrary\\ExpRazorClassLibrary.csproj",
+      "projectPath": "C:\\Projects\\2sxc\\poc-2sxc-mvc-website\\ExpRazorClassLibrary\\ExpRazorClassLibrary.csproj",
       "packagesPath": "C:\\Users\\2dm\\.nuget\\packages\\",
-      "outputPath": "C:\\Projects\\poc-2sxc-mvc-website\\ExpRazorClassLibrary\\obj\\",
+      "outputPath": "C:\\Projects\\2sxc\\poc-2sxc-mvc-website\\ExpRazorClassLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -65,7 +65,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

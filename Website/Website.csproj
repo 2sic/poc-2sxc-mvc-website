@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\2sxc-dnn742\Website\DesktopModules\ToSIC_SexyContent\ToSic.Sxc\2sxc core (ToSic.Sxc).csproj" />
     <ProjectReference Include="..\..\eav-server\ToSic.Eav.Apps\ToSic.Eav.Apps.csproj" />
     <ProjectReference Include="..\..\eav-server\ToSic.Eav.Core\ToSic.Eav.Core.csproj" />
     <ProjectReference Include="..\..\eav-server\ToSic.Eav.DataSources\ToSic.Eav.DataSources.csproj" />
